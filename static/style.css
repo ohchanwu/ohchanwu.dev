@@ -442,6 +442,13 @@ footer {
   .status-dot {
     animation: none;
   }
+  :root.theme-transition,
+  :root.theme-transition * {
+    transition: none !important;
+  }
+  .entry-title::after {
+    transition: none;
+  }
 }
 
 /* ---------- Theme toggle ---------- */
