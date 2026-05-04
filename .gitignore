@@ -37,3 +37,6 @@ go.work.sum
 *.pem
 *.key
 /data/
+
+.DS_Store
+docs/

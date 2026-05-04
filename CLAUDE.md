@@ -28,3 +28,30 @@ Personal portfolio website for Chanwu (Tyler) Oh.
 
 - Do not generate AI-voice prose for the README or site copy. I write those myself.
 - Do not run deployment commands; I handle deploys.
+
+## Working with Claude Code
+
+- Default to small, scoped changes. If a task touches more than ~3 files or ~150 lines, propose breaking it into multiple PRs before starting.
+- Show diffs before writing files when changes are non-trivial. Wait for confirmation if I haven't pre-approved the approach.
+- After making changes, do not run `git commit` or `git push` unless explicitly asked. I handle commits.
+- When you encounter ambiguity (e.g., "the user said X but the code suggests Y"), stop and ask. Don't guess and proceed.
+- If you suggest using a third-party library, name the alternative stdlib approach and let me decide.
+
+## Project structure
+
+- Entry point: `main.go` at repo root.
+- HTTP handlers: in handler files at repo root for now (e.g., `handlers.go`). Move to `internal/` only when it's clearly justified.
+- Templates: `templates/` directory, served via `html/template`.
+- Static assets: `static/` directory (CSS, JS, images), served via `http.FileServer`.
+- Tests live next to the code they test.
+
+## What "production-ready" means here
+
+This is a personal portfolio site, not a production service. Skip:
+
+- Elaborate error handling for impossible cases
+- Defensive coding for inputs the site doesn't take
+- Premature abstraction (interfaces with one implementation, etc.)
+- Microservice patterns
+
+Prefer simplicity that someone can read and understand in 30 seconds.
