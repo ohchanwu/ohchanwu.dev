@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" fill="#0c0c0c"/>
+  <text x="16" y="22"
+        text-anchor="middle"
+        font-family="'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="18"
+        font-weight="600"
+        fill="#d4926a">CO</text>
+</svg>
