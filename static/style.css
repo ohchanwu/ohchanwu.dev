@@ -506,3 +506,13 @@ footer {
 /* Explicit dark: show sun (covers OS=light + user picked dark) */
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ---------- Theme switch transition (added on click, removed 250ms later) ---------- */
+
+.theme-transition,
+.theme-transition * {
+  transition:
+    background-color 200ms var(--ease),
+    color 200ms var(--ease),
+    border-color 200ms var(--ease) !important;
+}
