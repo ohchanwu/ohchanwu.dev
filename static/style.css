@@ -8,7 +8,8 @@
   --rule: rgba(230, 225, 214, 0.08);
 
   --mono:
-    "IBM Plex Mono", ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+    "IBM Plex Mono", ui-monospace, "JetBrains Mono", "SF Mono", "Menlo",
+    monospace;
 
   --measure: 78ch;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
