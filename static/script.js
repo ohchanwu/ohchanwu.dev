@@ -55,6 +55,8 @@ Array.from(document.getElementsByClassName("year")).forEach((el) => {
     .addEventListener("change", () => {
       if (!root.hasAttribute("data-theme")) updateAriaLabel();
     });
+
+  document.addEventListener("langchange", updateAriaLabel);
 })();
 
 (function () {
@@ -96,5 +98,6 @@ Array.from(document.getElementsByClassName("year")).forEach((el) => {
     }
 
     updateAriaLabel();
+    document.dispatchEvent(new CustomEvent("langchange"));
   });
 })();
