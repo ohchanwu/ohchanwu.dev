@@ -1,4 +1,6 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+Array.from(document.getElementsByClassName("year")).forEach((el) => {
+  el.textContent = new Date().getFullYear();
+});
 
 (function () {
   const root = document.documentElement;
