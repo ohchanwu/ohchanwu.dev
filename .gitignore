@@ -40,3 +40,4 @@ go.work.sum
 
 .DS_Store
 docs/
+.claude/
