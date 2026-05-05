@@ -55,6 +55,18 @@
   --code-bg: rgba(230, 225, 214, 0.07);
 }
 
+:not(:root)[lang="ko"] {
+  display: none;
+}
+
+:root[data-lang="ko"] [lang="ko"] {
+  display: revert;
+}
+
+:root[data-lang="ko"] [lang="en"] {
+  display: none;
+}
+
 *,
 *::before,
 *::after {
