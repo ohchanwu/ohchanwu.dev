@@ -30,12 +30,37 @@
 
     <script>
       (function () {
+        const root = document.documentElement;
+
         try {
           const t = localStorage.getItem("theme");
           if (t === "light" || t === "dark") {
-            document.documentElement.setAttribute("data-theme", t);
+            root.setAttribute("data-theme", t);
           }
         } catch (e) {}
+
+        let lang;
+        try {
+          const stored = localStorage.getItem("lang");
+          if (stored === "en" || stored === "ko") {
+            lang = stored;
+          }
+        } catch (e) {}
+        if (!lang) {
+          lang = (navigator.language || "").toLowerCase().startsWith("ko") ? "ko" : "en";
+        }
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+
+        const title = document.querySelector("title");
+        const desc = document.querySelector('meta[name="description"]');
+        const titleKey = lang === "ko" ? "i18nKo" : "i18nEn";
+        if (title && title.dataset[titleKey]) {
+          title.textContent = title.dataset[titleKey];
+        }
+        if (desc && desc.dataset[titleKey]) {
+          desc.setAttribute("content", desc.dataset[titleKey]);
+        }
       })();
     </script>
     <link rel="stylesheet" href="style.css" />
