@@ -45,6 +45,12 @@ Set `ACME_STAGING=true` on the first deploy to use Let's Encrypt's staging direc
 
 Do not delete `/var/cache/autocert` on a running deploy. The directory is safe to back up, not safe to wipe.
 
+### HSTS (deferred)
+
+The `Strict-Transport-Security` header is intentionally not set. Browsers cache the policy for the full `max-age` window — commonly a year — and any cert breakage during that window (expiry, misconfigured renewal, ACME pipeline failure) becomes an un-clickable browser wall with no operator escape hatch. There is no way to revoke an HSTS policy that's already been cached by a visitor; you can only wait it out.
+
+Revisit only after autocert has survived its first auto-renewal cleanly (roughly 60 days after initial issuance), and even then start with a small `max-age` (e.g. 300 seconds → 86400 → 2592000 → 31536000 over a few weeks) before committing to a year.
+
 ## License
 
 MIT — see [LICENSE](./LICENSE).
