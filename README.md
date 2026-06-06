@@ -1,5 +1,7 @@
 # ohchanwu.dev
 
+_[한국어로 보기 🇰🇷](README.ko.md)_
+
 Personal portfolio site for Chanwu (Tyler) Oh.
 
 Built with Go and served from a single binary. Source code is the deployment.
