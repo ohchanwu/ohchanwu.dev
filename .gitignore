@@ -41,3 +41,14 @@ go.work.sum
 .DS_Store
 docs/
 .claude/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform/
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+# Keep .terraform.lock.hcl checked in — pins provider versions across machines.

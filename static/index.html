@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title
-      data-i18n-en="Chanwu Oh — Bilingual full-stack developer"
-      data-i18n-ko="오찬우 - 영어 원어민 풀스택 개발자"
+      data-i18n-en="Chanwu Oh — Cloud backend developer for safe AI adoption"
+      data-i18n-ko="오찬우 - AI를 서비스에 안전하게 도입하는 클라우드 백엔드 개발자"
     >
-      Chanwu Oh — Bilingual full-stack developer
+      Chanwu Oh — Cloud backend developer for safe AI adoption
     </title>
     <meta
       name="description"
-      data-i18n-en="Bilingual full-stack developer in Seongnam. I'm currently looking for entry-level backend or full-stack roles in Korea."
-      data-i18n-ko="성남에 거주하는 영어 원어민 풀스택 개발자입니다. 현재 한국에서 신입 백엔드 또는 풀스택 개발자 자리를 찾고 있습니다."
-      content="Bilingual full-stack developer in Seongnam. I'm currently looking for entry-level backend or full-stack roles in Korea."
+      data-i18n-en="Cloud backend developer in Seongnam building production web apps and AI-assisted developer job matching tools."
+      data-i18n-ko="성남에 거주하며 AI를 서비스에 안전하게 도입하는 클라우드 백엔드 개발자입니다."
+      content="Cloud backend developer in Seongnam building production web apps and AI-assisted developer job matching tools."
     />
     <meta name="color-scheme" content="light dark" />
 
@@ -47,7 +47,9 @@
           }
         } catch (e) {}
         if (!lang) {
-          lang = (navigator.language || "").toLowerCase().startsWith("ko") ? "ko" : "en";
+          lang = (navigator.language || "").toLowerCase().startsWith("ko")
+            ? "ko"
+            : "en";
         }
         root.setAttribute("data-lang", lang);
         root.setAttribute("lang", lang);
@@ -81,11 +83,35 @@
       type="button"
       aria-label="Switch to light mode"
     >
-      <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        class="icon-sun"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+        />
       </svg>
-      <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <svg
+        class="icon-moon"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
       </svg>
     </button>
@@ -106,22 +132,25 @@
         </p>
         <div class="output">
           <p class="line">
-            <span class="caret">&gt;</span> <span class="name" lang="en">Chanwu Oh</span><span class="name" lang="ko">오찬우</span>
+            <span class="caret">&gt;</span>
+            <span class="name" lang="en">Chanwu Oh</span
+            ><span class="name" lang="ko">오찬우</span>
           </p>
           <p class="line">
-            <span class="caret">&gt;</span> Go, JS, HTML+CSS, Docker, AWS,
-            Git+GitHub, MySQL, MongoDB
+            <span class="caret">&gt;</span> Go, Python, JS, HTML+CSS, Docker,
+            AWS, Terraform, Cloudflare, MySQL, MongoDB
           </p>
           <p class="line" lang="en">
-            <span class="caret">&gt;</span> Bilingual full-stack developer
-            &nbsp;&middot;&nbsp; Seongnam &nbsp;&middot;&nbsp; 2026
+            <span class="caret">&gt;</span> Cloud backend developer for safe AI
+            adoption &nbsp;&middot;&nbsp; Seongnam &nbsp;&middot;&nbsp; 2026
             &nbsp;&middot;&nbsp;
             <span class="status-dot" aria-hidden="true">●</span>
             <span class="status-text">available</span>
           </p>
           <p class="line" lang="ko">
-            <span class="caret">&gt;</span> 영어 원어민 풀스택 개발자
-            &nbsp;&middot;&nbsp; 성남 &nbsp;&middot;&nbsp; 2026
+            <span class="caret">&gt;</span> AI를 서비스에 안전하게 도입하는
+            클라우드 백엔드 개발자 &nbsp;&middot;&nbsp; 성남
+            &nbsp;&middot;&nbsp; 2026
             &nbsp;&middot;&nbsp;
             <span class="status-dot" aria-hidden="true">●</span>
             <span class="status-text">근무 가능</span>
@@ -131,7 +160,7 @@
         <nav class="quick-links" aria-label="Social and contact links">
           <a
             href="https://github.com/ohchanwu"
-            class="icon-link"
+            class="icon-link icon-link-github"
             aria-label="GitHub"
           >
             <svg
@@ -147,8 +176,33 @@
             </svg>
           </a>
           <a
-            href="https://www.linkedin.com/in/ohchanwu/"
+            href="resume_kr.pdf"
             class="icon-link"
+            aria-label="Resume PDF"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              width="20"
+              height="20"
+            >
+              <path d="M6 2.75h8l4 4v14.5H6z" />
+              <path d="M14 2.75v4h4" />
+              <path d="M9 12h6" />
+              <path d="M9 15.5h6" />
+              <path d="M9 19h3.5" />
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ohchanwu/"
+            class="icon-link icon-link-linkedin"
             aria-label="LinkedIn"
           >
             <svg
@@ -163,11 +217,7 @@
               />
             </svg>
           </a>
-          <a
-            href="mailto:ohchanwu@pm.me"
-            class="icon-link"
-            aria-label="Email"
-          >
+          <a href="mailto:ohchanwu@pm.me" class="icon-link" aria-label="Email">
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
@@ -193,46 +243,80 @@
         </h2>
         <div class="bio">
           <p lang="en">
-            <span class="caret">&gt;</span> Hello, I am Chanwu Oh. I taught
-            myself web development in 2025 after pivoting from a different
-            career path.
+            <span class="caret">&gt;</span> Hello, I am Chanwu Oh, a cloud
+            backend developer who helps introduce AI safely into services.
           </p>
           <p lang="ko">
-            <span class="caret">&gt;</span> 안녕하세요, 저는 오찬우입니다. 2025년에 웹개발로 커리어 전환을 결심하고 독학을 시작했습니다.
+            <span class="caret">&gt;</span> 안녕하세요, AI를 서비스에 안전하게
+            도입하는 클라우드 백엔드 개발자 오찬우입니다.
           </p>
           <p lang="en">
             <span class="caret">&gt;</span> I&rsquo;ve built and deployed a
             production web app for a New York PT clinic, working solo on a Go
-            backend and an HTML/CSS/JS frontend hosted on AWS, with Stripe
-            integration.
+            backend and an HTML/CSS/JS frontend hosted on AWS, with Docker,
+            Cloudflare, Terraform, and Stripe integration.
           </p>
           <p lang="ko">
-            <span class="caret">&gt;</span> 뉴욕 물리치료 클리닉을 위한 웹사이트를 Go 백엔드와 HTML/CSS/JS 프론트엔드로 개발했으며, Docker와 AWS로 호스팅하고, Stripe 결제 연동을 구현했습니다.
+            <span class="caret">&gt;</span> 뉴욕 물리치료 클리닉을 위한
+            웹사이트를 Go 백엔드와 HTML/CSS/JS 프론트엔드로 개발했으며, Docker와
+            AWS로 호스팅하고, Cloudflare, Terraform, Stripe 결제 연동을
+            구현했습니다.
           </p>
           <p lang="en">
-            <span class="caret">&gt;</span> I&rsquo;ve also built a portfolio
-            site for a French architect and merged a PR to the open-source
-            project freeCodeCamp.
+            <span class="caret">&gt;</span> I&rsquo;m currently building an app
+            that gathers entry-level developer job postings in one place and
+            uses AI to rank how well each role fits.
           </p>
           <p lang="ko">
-            <span class="caret">&gt;</span> 프랑스 건축가의 포트폴리오 사이트도 개발했고, freeCodeCamp 오픈소스 프로젝트에 PR을 머지(병합)하여 기여한 경험도 있습니다.
+            <span class="caret">&gt;</span> 현재 저는 여러 신입 개발자 채용
+            공고를 한 곳에 모아 AI로 적합도를 매겨주는 어플을 개발하고 있습니다.
           </p>
           <p lang="en">
-            <span class="caret">&gt;</span> I&rsquo;m currently looking for
-            entry-level backend or full-stack roles in Korea.
+            <span class="caret">&gt;</span> I also built a responsive portfolio
+            site for a French architect and contributed a merged fix to the
+            open-source project freeCodeCamp.
           </p>
           <p lang="ko">
-            <span class="caret">&gt;</span> 현재 저는 한국에서 백엔드/풀스택 신입 개발자 자리를 찾고 있습니다.
+            <span class="caret">&gt;</span> 프랑스 건축가의 반응형 포트폴리오
+            사이트를 개발했고, freeCodeCamp 오픈소스 프로젝트에 PR을 머지(병합)한
+            경험도 있습니다.
           </p>
         </div>
       </section>
 
       <section class="section">
-        <h2 class="section-title">
+        <h2 class="section-title section-title-with-note">
           <span lang="en"># work</span><span lang="ko"># 경력</span>
           <span class="rule" aria-hidden="true"></span>
+          <span class="section-note" lang="en"
+            >For details, please see GitHub or my resume.</span
+          >
+          <span class="section-note" lang="ko"
+            >자세한 사항은 GitHub 아니면 이력서 참고 부탁드립니다</span
+          >
         </h2>
         <ul class="list">
+          <li class="item">
+            <span class="key">2026-now</span>
+            <div class="entry">
+              <a href="https://github.com/ohchanwu" class="entry-title"
+                >Job Scraper</a
+              >
+              <p class="entry-desc" lang="en">
+                Building a Go-based job-posting aggregator that collects
+                entry-level developer roles from multiple portals and ranks fit
+                with AI. Uses goroutines and channels for polite parallel
+                scraping, source-specific parsers, tests, and a vanilla
+                HTML/CSS/JS interface.
+              </p>
+              <p class="entry-desc" lang="ko">
+                여러 포털의 신입 개발자 채용 공고를 모으고 AI로 적합도를
+                평가하는 Go 기반 어플을 개발하고 있습니다. goroutine과 채널로
+                예의 있는 병렬 스크래핑을 구현했고, 소스별 파서와 테스트,
+                HTML/CSS/JS UI를 함께 구축했습니다.
+              </p>
+            </div>
+          </li>
           <li class="item">
             <span class="key">2025-2026</span>
             <div class="entry">
@@ -241,11 +325,19 @@
               >
               <p class="entry-desc" lang="en">
                 Solo-built production web app for a NYC physical therapy clinic
-                &mdash; Go backend, HTML/CSS/JS frontend, deployed on AWS, with
-                Stripe integration.
+                after replacing a slow, constrained SaaS setup. Deployed web
+                and database containers to AWS EC2 with Docker Compose, used
+                Cloudflare CDN and reverse proxy TLS, managed security groups
+                with Terraform, integrated Stripe, and reduced latency from
+                500ms+ to about 120ms.
               </p>
               <p class="entry-desc" lang="ko">
-                뉴욕 물리치료 클리닉의 실제 운영 웹앱 (단독 개발) - Go 백엔드 | HTML/CSS/JS 프론트엔드 | Docker와 AWS 호스팅 | Stripe 결제 연동
+                느리고 제약이 많던 SaaS 구성을 대체하기 위해 뉴욕 물리치료
+                클리닉의 실제 운영 웹앱을 단독 개발했습니다. Go 백엔드와
+                HTML/CSS/JS 프론트엔드를 Docker Compose로 AWS EC2에 배포했고,
+                Cloudflare CDN과 reverse proxy TLS, Terraform 보안 그룹 관리,
+                Stripe 결제 연동을 구현하여 레이턴시를 500ms+에서 약 120ms로
+                줄였습니다.
               </p>
             </div>
           </li>
@@ -253,17 +345,23 @@
             <span class="key">2025</span>
             <div class="entry">
               <a
-                href="https://ohchanwu.github.io/AlixChaputArchitecture/"
+                href="https://ohchanwu.github.io/alix-chaput-architecture/"
                 class="entry-title"
                 >Alix Chaput Architecture</a
               >
               <p class="entry-desc" lang="en">
-                Hand-coded portfolio site for architect Alix Chaput &mdash;
-                vanilla HTML/CSS/JS, no frameworks. My first real client
-                project.
+                Hand-coded a responsive portfolio site for architect Alix Chaput
+                with vanilla HTML/CSS/JS, dynamic frontend layout logic, WebP
+                image optimization, and GitHub Pages deployment. Maintained
+                consistent desktop, tablet, and mobile presentation with about a
+                100ms load time.
               </p>
               <p class="entry-desc" lang="ko">
-                직접 개발한 건축가 Alix Chaput의 포트폴리오 사이트 - HTML/CSS/JS | 프레임워크 없음 | 첫 클라이언트 프로젝트
+                프랑스 건축가 Alix Chaput의 반응형 포트폴리오 사이트를
+                HTML/CSS/JS로 직접 개발했습니다. CSS breakpoint와 프론트엔드
+                JavaScript로 동적 레이아웃을 구성하고, WebP 이미지 최적화와
+                GitHub Pages 배포를 통해 desktop, tablet, mobile 화면 일관성과
+                약 100ms 로딩 속도를 확보했습니다.
               </p>
             </div>
           </li>
@@ -291,7 +389,9 @@
                 <code>.has()</code> argument.
               </p>
               <p class="entry-desc" lang="ko">
-                JavaScript 커리큘럼의 WeakSet 예제에서 <code>.add()</code>에 전달된 객체 리터럴과 <code>.has()</code>에 전달된 문자열이 WeakSet 예제가 실제로 작동하지 않던 문제를 수정했습니다.
+                JavaScript 커리큘럼의 WeakSet 예제에서 <code>.add()</code>에
+                전달된 객체 리터럴과 <code>.has()</code>에 전달된 문자열이
+                WeakSet 예제가 실제로 작동하지 않던 문제를 수정했습니다.
               </p>
             </div>
           </li>
@@ -315,7 +415,9 @@
           <li class="item">
             <span class="key">linkedin</span>
             <div class="entry">
-              <a href="https://www.linkedin.com/in/ohchanwu/" class="entry-title"
+              <a
+                href="https://www.linkedin.com/in/ohchanwu/"
+                class="entry-title"
                 ><span class="arrow">&rarr;</span> linkedin.com/in/ohchanwu</a
               >
             </div>
@@ -336,8 +438,12 @@
           <span class="dim">[~]</span> <span class="dollar">$</span>
           <span class="cursor" aria-hidden="true"></span>
         </p>
-        <p class="copy" lang="en">&copy; <span class="year"></span> &middot; built in go</p>
-        <p class="copy" lang="ko">&copy; <span class="year"></span> &middot; Go로 개발</p>
+        <p class="copy" lang="en">
+          &copy; <span class="year"></span> &middot; built in go
+        </p>
+        <p class="copy" lang="ko">
+          &copy; <span class="year"></span> &middot; Go로 개발
+        </p>
       </footer>
     </main>
 

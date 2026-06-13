@@ -13,7 +13,7 @@
     "IBM Plex Mono", ui-monospace, "JetBrains Mono", "SF Mono", "Menlo",
     monospace;
 
-  --measure: 78ch;
+  --measure: 64ch;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -108,6 +108,7 @@ body {
 
 main {
   max-width: var(--measure);
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -136,10 +137,17 @@ p {
   width: 220px;
   height: 220px;
   object-fit: cover;
+  border-radius: 14px;
   border: 1px solid var(--rule);
-  margin: 0 auto;
+  margin: 3rem auto 0;
   margin-bottom: 4.25rem;
   filter: grayscale(0.15) contrast(1.02);
+}
+
+@media (min-width: 768px) {
+  .avatar {
+    margin-top: 0;
+  }
 }
 
 /* ---------- Prompt header ---------- */
@@ -171,6 +179,8 @@ p {
   color: var(--fg);
   padding-left: 2.6ch;
   text-indent: -2.6ch;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .output .line + .line {
@@ -214,26 +224,47 @@ p {
 
 .quick-links {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.1rem;
   margin-top: 1.5rem;
   padding-left: 2.6ch;
 }
 
 .icon-link {
-  color: var(--muted);
+  color: var(--accent);
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
   transition:
     color 250ms var(--ease),
     transform 250ms var(--ease);
 }
 
 .icon-link:hover {
-  color: var(--accent);
+  color: var(--fg-bright);
   transform: translateY(-1px);
+}
+
+.icon-link:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .icon-link svg {
   display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.icon-link-github svg {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-link-linkedin svg {
+  width: 22px;
+  height: 22px;
 }
 
 /* ---------- Sections ---------- */
@@ -253,11 +284,39 @@ p {
   letter-spacing: 0.01em;
 }
 
+.section-title-with-note {
+  flex-wrap: wrap;
+}
+
 .section-title .rule {
   flex: 1;
   height: 1px;
   background: var(--rule);
   display: block;
+}
+
+.section-note {
+  color: var(--dim);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .section-title-with-note .rule {
+    flex-basis: 100%;
+    order: 3;
+  }
+
+  .section-note {
+    flex-basis: 100%;
+    margin-left: 0;
+    order: 2;
+    white-space: normal;
+  }
 }
 
 /* ---------- Bio ---------- */
@@ -273,6 +332,8 @@ p {
   line-height: 1.65;
   padding-left: 2.6ch;
   text-indent: -2.6ch;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* ---------- Lists ---------- */
@@ -303,6 +364,9 @@ p {
   font-weight: 400;
   position: relative;
   display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .entry-title::after {
@@ -329,6 +393,12 @@ p {
   font-size: 0.875rem;
   margin-top: 0.15rem;
   line-height: 1.6;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.entry {
+  min-width: 0;
 }
 
 .entry-desc code {
@@ -346,6 +416,13 @@ p {
   transition:
     transform 300ms var(--ease),
     color 300ms var(--ease);
+}
+
+@media (max-width: 560px) {
+  .item {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
 }
 
 .entry-title:hover .arrow {
