@@ -52,3 +52,4 @@ docs/
 crash.log
 crash.*.log
 # Keep .terraform.lock.hcl checked in — pins provider versions across machines.
+.gstack/

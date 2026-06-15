@@ -79,7 +79,7 @@ func newManager(cfg config) *autocert.Manager {
 
 func run(ctx context.Context, cfg config) error {
 	mux := http.NewServeMux()
-	mux.Handle("/", http.FileServer(http.Dir("static")))
+	mux.Handle("/", inlinePDFs(http.FileServer(http.Dir("static"))))
 
 	if len(cfg.tlsDomains) == 0 {
 		log.Printf("TLS disabled (TLS_DOMAINS unset); serving plain HTTP on %s", cfg.httpAddr)
@@ -107,6 +107,15 @@ func run(ctx context.Context, cfg config) error {
 		ReadHeaderTimeout: 10 * time.Second,
 	}
 	return serveUntilShutdown(ctx, httpSrv, httpsSrv)
+}
+
+func inlinePDFs(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasSuffix(strings.ToLower(r.URL.Path), ".pdf") {
+			w.Header().Set("Content-Disposition", "inline")
+		}
+		next.ServeHTTP(w, r)
+	})
 }
 
 func serveUntilShutdown(ctx context.Context, httpSrv, httpsSrv *http.Server) error {

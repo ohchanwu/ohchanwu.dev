@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
 	"reflect"
 	"testing"
 )
@@ -127,5 +129,25 @@ func TestHostPolicyRejectsUnknown(t *testing.T) {
 	}
 	if err := m.HostPolicy(context.Background(), "evil.example.com"); err == nil {
 		t.Errorf("expected non-whitelisted host to be rejected, got nil")
+	}
+}
+
+func TestInlinePDFsSetsDispositionOnlyForPDFs(t *testing.T) {
+	handler := inlinePDFs(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusNoContent)
+	}))
+
+	pdfReq := httptest.NewRequest(http.MethodGet, "/resume_kr.pdf", nil)
+	pdfRes := httptest.NewRecorder()
+	handler.ServeHTTP(pdfRes, pdfReq)
+	if got := pdfRes.Header().Get("Content-Disposition"); got != "inline" {
+		t.Fatalf("PDF Content-Disposition = %q, want inline", got)
+	}
+
+	htmlReq := httptest.NewRequest(http.MethodGet, "/index.html", nil)
+	htmlRes := httptest.NewRecorder()
+	handler.ServeHTTP(htmlRes, htmlReq)
+	if got := htmlRes.Header().Get("Content-Disposition"); got != "" {
+		t.Fatalf("HTML Content-Disposition = %q, want empty", got)
 	}
 }
