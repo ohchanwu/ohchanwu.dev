@@ -417,6 +417,22 @@ p {
   word-break: break-word;
 }
 
+.entry-desc strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.entry-desc a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.entry-desc a:hover {
+  color: var(--fg-bright);
+}
+
 .entry {
   min-width: 0;
 }

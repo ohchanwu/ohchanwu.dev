@@ -313,21 +313,27 @@
           <li class="item">
             <span class="key">2026-now</span>
             <div class="entry">
-              <a href="https://github.com/ohchanwu" class="entry-title"
+              <a href="https://github.com/ohchanwu/job-scraper" class="entry-title"
                 >Job Scraper</a
               >
               <p class="entry-desc" lang="en">
-                Building a Go-based job-posting aggregator that collects
-                entry-level developer roles from multiple portals and ranks fit
-                with AI. Uses goroutines and channels for polite parallel
-                scraping, source-specific parsers, tests, and a vanilla
-                HTML/CSS/JS interface.
+                I am building an app that gathers entry-level developer job
+                postings scattered across multiple hiring portals and calculates
+                user-specific fit with keyword matching and AI reasoning. Right
+                now, users run scraping locally, which means the same portal
+                requests repeat as the user base grows. To reduce that, I am
+                moving scraping and posting normalization to
+                <strong>shared AWS processing</strong> while keeping
+                user-specific fit scoring local.
               </p>
               <p class="entry-desc" lang="ko">
-                여러 포털의 신입 개발자 채용 공고를 모으고 AI로 적합도를
-                평가하는 Go 기반 어플을 개발하고 있습니다. goroutine과 채널로
-                예의 있는 병렬 스크래핑을 구현했고, 소스별 파서와 테스트,
-                HTML/CSS/JS UI를 함께 구축했습니다.
+                여러 채용 포털에 흩어진 신입 개발자 공고를 한곳에 모으고,
+                키워드 매칭과 AI 추론으로 사용자별 적합도를 계산하는 앱을
+                만들고 있습니다. 현재는 사용자가 로컬에서 직접 스크래핑을 실행해
+                사용자가 늘수록 같은 포털 요청이 반복되는 문제가 있습니다. 이를
+                줄이기 위해 <strong>스크래핑과 공고 정규화는 AWS에서 공통 처리</strong
+                >하고, 사용자별 적합도 계산은 로컬에 남기는 하이브리드 구조로
+                이전하고 있습니다.
               </p>
             </div>
           </li>
@@ -338,20 +344,54 @@
                 >Cha Physical Therapy</a
               >
               <p class="entry-desc" lang="en">
-                Solo-built production web app for a NYC physical therapy clinic
-                after replacing a slow, constrained SaaS setup. Deployed web and
-                database containers to AWS EC2 with Docker Compose, used
-                Cloudflare content delivery network (CDN) and reverse proxy TLS,
-                managed security groups with Terraform, and reduced latency from
-                500ms+ to about 120ms.
+                Migrated a SquareSpace clinic website to an AWS-based web app,
+                improving the UI, integrating Stripe payments, and reducing
+                latency. The existing software as a service (SaaS) environment
+                limited UI customization and performance work, so I persuaded
+                the marketing team by showing a GitHub Pages demo with improved
+                UI and speed. I then rebuilt the app with a
+                <strong>Go backend and Docker deployment structure</strong>,
+                learning that a working prototype is the strongest way to make a
+                migration case.
               </p>
               <p class="entry-desc" lang="ko">
-                느리고 제약이 많던 SaaS 구성을 대체하기 위해 뉴욕 물리치료
-                클리닉의 실제 운영 웹앱을 단독 개발했습니다. Go 백엔드와
-                HTML/CSS/JS 프론트엔드를 Docker Compose로 AWS EC2에 배포했고,
-                Cloudflare 콘텐츠 전송 네트워크(CDN)와 reverse proxy TLS,
-                Terraform 보안 그룹 관리를 구현하여 레이턴시를 500ms+에서 약
-                120ms로 줄였습니다.
+                SquareSpace 기반 클리닉 웹사이트를 AWS 기반 웹앱으로 이전해 UI
+                개선, Stripe 결제 연동, 레이턴시 감축을 구현했습니다. 기존 SaaS
+                환경은 UI 커스터마이징과 성능 개선에 제약이 있었고, 마케팅 팀을
+                설득하기 위해 GitHub Pages 데모로 개선된 UI와 속도를 직접
+                보여줬습니다. 이후 <strong>Go 백엔드와 Docker 배포 구조</strong
+                >로 웹앱을 재구축하며, 마이그레이션 설득에는 작동하는
+                프로토타입이 가장 효과적이라는 점을 배웠습니다.
+              </p>
+              <p class="entry-desc" lang="en">
+                In April 2026, the service went down after an AWS Elastic Block
+                Store (EBS) gp3 volume exceeded its input/output throughput
+                limit. The root cause was a spike in disk input/output from
+                accumulated data, inefficient queries, and missing timeouts.
+                After restoring the service on a new EBS volume, I lowered the
+                chance of recurrence by applying
+                <strong
+                  >query rewrites, indexes, timeouts, data cleanup jobs, and
+                  CloudWatch monitoring</strong
+                >. I documented the details in a
+                <a
+                  href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.md"
+                  >postmortem</a
+                >.
+              </p>
+              <p class="entry-desc" lang="ko">
+                2026년 4월, AWS EBS gp3 볼륨의 I/O 처리량 한도 초과로 서비스
+                장애가 발생했습니다. 원인은 데이터 누적, 비효율적인 쿼리,
+                타임아웃 부재로 인한 디스크 I/O 급증이었습니다. 새 EBS 볼륨으로
+                서비스를 복구한 뒤
+                <strong
+                  >쿼리 재작성, 인덱스 추가, 타임아웃 설정, 데이터 정리 작업,
+                  CloudWatch 모니터링</strong
+                >을 적용해 재발 가능성을 낮췄고, 자세한 내용은
+                <a
+                  href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.ko.md"
+                  >사후 보고서</a
+                >에 정리했습니다.
               </p>
             </div>
           </li>
@@ -364,18 +404,23 @@
                 >Alix Chaput Architecture</a
               >
               <p class="entry-desc" lang="en">
-                Hand-coded a responsive portfolio site for architect Alix Chaput
-                with vanilla HTML/CSS/JS, dynamic frontend layout logic, WebP
-                image optimization, and GitHub Pages deployment. Maintained
-                consistent desktop, tablet, and mobile presentation with about a
-                100ms load time.
+                Built a French architect's portfolio site so it would stay
+                consistent across desktop, tablet, and mobile. Large images were
+                slowing down the page, and each screen size needed a stable
+                layout, so I created a
+                <strong>responsive layout with CSS breakpoints and JavaScript</strong>
+                and converted images to WebP. I deployed it on GitHub Pages to
+                avoid separate domain costs, and the project taught me why a
+                declarative framework like React is useful for complex UI state.
               </p>
               <p class="entry-desc" lang="ko">
-                프랑스 건축가 Alix Chaput의 반응형 포트폴리오 사이트를
-                HTML/CSS/JS로 직접 개발했습니다. CSS breakpoint와 프론트엔드
-                JavaScript로 동적 레이아웃을 구성하고, WebP 이미지 최적화와
-                GitHub Pages 배포를 통해 desktop, tablet, mobile 화면 일관성과
-                약 100ms 로딩 속도를 확보했습니다.
+                프랑스 건축가 포트폴리오 사이트를 데스크톱, 태블릿, 모바일에서
+                일관되게 보이도록 구현했습니다. 큰 이미지 용량으로 로딩이
+                느렸고, 화면 크기별 레이아웃 유지가 필요했기 때문에
+                <strong>CSS breakpoint와 JavaScript로 반응형 레이아웃</strong>을
+                만들고 이미지를 WebP로 변환했습니다. GitHub Pages에 배포해 별도
+                도메인 비용 없이 운영했고, 이 과정에서 복잡한 화면 상태에는
+                React 같은 선언형 프레임워크가 유용하다는 점을 체감했습니다.
               </p>
             </div>
           </li>
