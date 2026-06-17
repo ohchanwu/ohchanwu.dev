@@ -137,7 +137,7 @@ func TestInlinePDFsSetsDispositionOnlyForPDFs(t *testing.T) {
 		w.WriteHeader(http.StatusNoContent)
 	}))
 
-	pdfReq := httptest.NewRequest(http.MethodGet, "/resume_kr.pdf", nil)
+	pdfReq := httptest.NewRequest(http.MethodGet, "/resume-kr.pdf", nil)
 	pdfRes := httptest.NewRecorder()
 	handler.ServeHTTP(pdfRes, pdfReq)
 	if got := pdfRes.Header().Get("Content-Disposition"); got != "inline" {
