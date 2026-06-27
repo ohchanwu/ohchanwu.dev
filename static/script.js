@@ -2,6 +2,58 @@ Array.from(document.getElementsByClassName("year")).forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
 
+/* Native scroll restoration runs before fonts and media settle, then scroll
+   anchoring can re-save a slightly shifted value on each reload. Take over so
+   reload/back-forward restore the exact saved position after layout settles. */
+(function restoreScroll() {
+  if (!("scrollRestoration" in history)) return;
+  history.scrollRestoration = "manual";
+
+  const key = `ohchanwu:scroll:${location.pathname}${location.search}`;
+
+  const save = () => {
+    try {
+      sessionStorage.setItem(key, String(Math.round(window.pageYOffset)));
+    } catch (e) {}
+  };
+
+  window.addEventListener("pagehide", save);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") save();
+  });
+
+  const entry =
+    (performance.getEntriesByType &&
+      performance.getEntriesByType("navigation")[0]) ||
+    null;
+  const navType = entry
+    ? entry.type
+    : performance.navigation && performance.navigation.type === 1
+      ? "reload"
+      : "navigate";
+  if (navType !== "reload" && navType !== "back_forward") return;
+
+  let saved = 0;
+  try {
+    saved = parseInt(sessionStorage.getItem(key), 10) || 0;
+  } catch (e) {}
+  if (saved <= 0) return;
+
+  const apply = () => {
+    window.scrollTo(0, saved);
+  };
+
+  apply();
+  window.addEventListener("DOMContentLoaded", apply);
+  window.addEventListener("load", () => {
+    requestAnimationFrame(apply);
+    window.setTimeout(apply, 800);
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => requestAnimationFrame(apply));
+  }
+})();
+
 (function () {
   function init() {
     document.documentElement.classList.add("media-fade-enabled");
