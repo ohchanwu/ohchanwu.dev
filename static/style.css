@@ -264,6 +264,10 @@ p {
     transform 250ms var(--ease);
 }
 
+:root[data-lang="ko"] .icon-link[lang="ko"] {
+  display: inline-flex;
+}
+
 .icon-link:hover {
   color: var(--fg-bright);
   transform: translateY(-1px);
