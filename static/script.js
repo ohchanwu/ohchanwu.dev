@@ -3,6 +3,62 @@ Array.from(document.getElementsByClassName("year")).forEach((el) => {
 });
 
 (function () {
+  function init() {
+    document.documentElement.classList.add("media-fade-enabled");
+
+    const reveal = (el) => {
+      el.classList.add("is-media-loaded");
+    };
+    const fail = (el) => {
+      el.classList.add("is-media-error");
+    };
+
+    const settleImage = (img) => {
+      const show = () => {
+        if (img.decode) {
+          img.decode().then(
+            () => reveal(img),
+            () => reveal(img),
+          );
+        } else {
+          reveal(img);
+        }
+      };
+
+      if (img.complete && img.naturalWidth > 0) {
+        show();
+        return;
+      }
+      img.addEventListener("load", show, { once: true });
+      img.addEventListener("error", () => fail(img), { once: true });
+    };
+
+    const settleVideo = (video) => {
+      if (video.readyState >= 2) {
+        reveal(video);
+        return;
+      }
+      video.addEventListener("loadeddata", () => reveal(video), { once: true });
+      video.addEventListener("error", () => fail(video), { once: true });
+    };
+
+    document.querySelectorAll(".content-media").forEach((media) => {
+      if (media.tagName === "IMG") {
+        settleImage(media);
+      } else if (media.tagName === "VIDEO") {
+        settleVideo(media);
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+
+(function () {
   const root = document.documentElement;
   const toggle = document.getElementById("theme-toggle");
   if (!toggle) return;
