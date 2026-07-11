@@ -39,11 +39,22 @@ Personal portfolio website for Chanwu (Tyler) Oh.
 
 ## Project structure
 
+- Documentation index: `docs/README.md`.
+- Tracked implementation knowledge: `docs/superpowers/README.md`.
 - Entry point: `main.go` at repo root.
 - HTTP handlers: in handler files at repo root for now (e.g., `handlers.go`). Move to `internal/` only when it's clearly justified.
 - Templates: `templates/` directory, served via `html/template`.
 - Static assets: `static/` directory (CSS, JS, images), served via `http.FileServer`.
 - Tests live next to the code they test.
+
+## Documentation lifecycle
+
+- Keep durable documentation under `docs/`, organized by subject rather than by generic `plans` or `reports` buckets.
+- Keep active plans, active specifications, durable decisions, and useful completed records under the categories described in `docs/superpowers/README.md`.
+- When work finishes, update maintained documentation, archive only useful durable records, and remove completed material from active categories.
+- Do not scan `docs/superpowers/archive/` during ordinary work. Read its `AGENTS.md` before using historical records.
+- Store temporary SDD work in ignored `.superpowers/sdd/` and sanitized machine-local evidence in ignored `.superpowers/archive/`.
+- Treat tracked files as public. Never record credentials, private operational details, or personal data unless an intentional publication exception is documented.
 
 ## What "production-ready" means here
 

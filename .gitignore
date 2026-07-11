@@ -34,13 +34,18 @@ go.work.sum
 # Project-specific
 .env
 .env.local
+/ohchanwu.dev
 *.pem
 *.key
 /data/
 
 .DS_Store
-docs/
+.beads/
+.runtime/
 .claude/
+.superpowers/sdd/
+.superpowers/archive/
+CLAUDE.local.md
 
 # Terraform
 *.tfstate
