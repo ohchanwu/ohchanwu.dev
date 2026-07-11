@@ -6,6 +6,8 @@ _[Read this in English 🇬🇧](README.md)_
 
 Go로 작성되었으며 단일 바이너리(single binary)로 서비스됩니다. 소스 코드 자체가 곧 배포 단위입니다.
 
+프로젝트 문서는 [docs/README.md](docs/README.md)에 정리되어 있습니다.
+
 ## 기술 스택(Stack)
 
 - Go (HTTP 서버, html/template)

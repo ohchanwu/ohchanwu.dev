@@ -6,6 +6,8 @@ Personal portfolio site for Chanwu (Tyler) Oh.
 
 Built with Go and served from a single binary. Source code is the deployment.
 
+Project documentation is indexed in [docs/README.md](docs/README.md).
+
 ## Stack
 
 - Go (HTTP server, html/template)

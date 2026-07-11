@@ -39,8 +39,12 @@ go.work.sum
 /data/
 
 .DS_Store
-docs/
+.beads/
+.runtime/
 .claude/
+.superpowers/sdd/
+.superpowers/archive/
+CLAUDE.local.md
 
 # Terraform
 *.tfstate
