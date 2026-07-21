@@ -344,10 +344,10 @@ standard-library preview server, gstack `/browse`, Gitleaks.
   Run:
 
   ```sh
-  ruby -e 'require "yaml"; YAML.safe_load_file(".github/workflows/pages.yml", aliases: true); puts "workflow YAML parsed"'
+  ruby -e 'require "yaml"; YAML.safe_load(File.read(".github/workflows/pages.yml"), permitted_classes: [], permitted_symbols: [], aliases: true); puts "workflow YAML parsed"'
   rg -n 'actions/checkout@v4|actions/configure-pages@v5|actions/upload-pages-artifact@v3|actions/deploy-pages@v5|path: static' \
     .github/workflows/pages.yml
-  test "$(rg -c '^            path: static$' .github/workflows/pages.yml)" = "1"
+  test "$(rg -c '^          path: static$' .github/workflows/pages.yml)" = "1"
   ! rg -n 'CNAME|\.nojekyll|404\.html|npm|go build|docker' .github/workflows/pages.yml
   ```
 
@@ -680,7 +680,7 @@ standard-library preview server, gstack `/browse`, Gitleaks.
   BASE="$(git log -1 --format=%H --fixed-strings \
     --grep='docs: add GitHub Pages migration plan')"
   test -n "$BASE"
-  ruby -e 'require "yaml"; YAML.safe_load_file(".github/workflows/pages.yml", aliases: true); puts "workflow YAML parsed"'
+  ruby -e 'require "yaml"; YAML.safe_load(File.read(".github/workflows/pages.yml"), permitted_classes: [], permitted_symbols: [], aliases: true); puts "workflow YAML parsed"'
   node --check static/script.js
   test -f static/index.html
   test -f static/style.css
