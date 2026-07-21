@@ -1,0 +1,60 @@
+# ohchanwu.dev
+
+Personal portfolio website for Chanwu (Tyler) Oh.
+
+## Stack
+
+- Go (backend, single binary)
+- Raw HTML/CSS/JS (no framework)
+- Docker / docker-compose for deployment
+- Cloudflare DNS proxied, Full (strict) TLS mode
+- Deployed on EC2 t3.micro (Amazon Linux 2023)
+
+## Conventions
+
+- Match existing code style; do not introduce new dependencies without asking.
+- Write commit messages in conventional commit format: `feat:`, `fix:`, `chore:`, etc.
+- Do not add comments that restate what code does; only comments that explain _why_.
+- Prefer standard library over third-party packages when reasonable.
+- Tests live alongside the code they test (`foo.go` + `foo_test.go`).
+
+## Workflow
+
+- Work happens on feature branches, never directly on `main`.
+- Branch naming: `feat/`, `fix/`, `chore/` prefixes.
+- All changes go through PRs; CodeRabbit reviews automatically.
+
+## Out of scope
+
+- Do not generate AI-voice prose for the README or site copy. I write those myself.
+- Do not run deployment commands; I handle deploys.
+
+## Project structure
+
+- Documentation index: `docs/README.md`.
+- Tracked implementation knowledge: `docs/superpowers/README.md`.
+- Entry point: `main.go` at repo root.
+- HTTP handlers: in handler files at repo root for now (e.g., `handlers.go`). Move to `internal/` only when it's clearly justified.
+- Templates: `templates/` directory, served via `html/template`.
+- Static assets: `static/` directory (CSS, JS, images), served via `http.FileServer`.
+- Tests live next to the code they test.
+
+## Documentation lifecycle
+
+- Keep durable documentation under `docs/`, organized by subject rather than by generic `plans` or `reports` buckets.
+- Keep active plans, active specifications, durable decisions, and useful completed records under the categories described in `docs/superpowers/README.md`.
+- When work finishes, update maintained documentation, archive only useful durable records, and remove completed material from active categories.
+- Do not scan `docs/superpowers/archive/` during ordinary work. Read its `AGENTS.md` before using historical records.
+- Store temporary SDD work in ignored `.superpowers/sdd/` and sanitized machine-local evidence in ignored `.superpowers/archive/`.
+- Treat tracked files as public. Never record credentials, private operational details, or personal data unless an intentional publication exception is documented.
+
+## What "production-ready" means here
+
+This is a personal portfolio site, not a production service. Skip:
+
+- Elaborate error handling for impossible cases
+- Defensive coding for inputs the site doesn't take
+- Premature abstraction (interfaces with one implementation, etc.)
+- Microservice patterns
+
+Prefer simplicity that someone can read and understand in 30 seconds.
