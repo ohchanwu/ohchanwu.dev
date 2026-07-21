@@ -18,8 +18,8 @@ standard-library preview server, gstack `/browse`, Gitleaks.
 
 ## Global Constraints
 
-- Work only in `/Users/chanbla11mit/gt/ohchanwu_dev/mayor/rig` on
-  `chore/github-pages` unless the repository owner explicitly changes the branch.
+- Work only from the repository root on `chore/github-pages` unless the repository owner
+  explicitly changes the branch.
 - Keep the existing repository and remote. Do not create another repository, deployment branch,
   package manifest, generated site directory, `CNAME`, `.nojekyll`, or custom `404.html`.
 - Keep the deployable artifact limited to `static/`. Repository docs and metadata must not be
@@ -134,8 +134,8 @@ standard-library preview server, gstack `/browse`, Gitleaks.
   Read and follow both skills in full before browser work:
 
   ```text
-  /Users/chanbla11mit/.codex/skills/frontend-qa/SKILL.md
-  /Users/chanbla11mit/.agents/skills/gstack/browse/SKILL.md
+  ~/.codex/skills/frontend-qa/SKILL.md
+  ~/.agents/skills/gstack/browse/SKILL.md
   ```
 
   Run the `/browse` preamble and setup check from its skill. Use one headless session. If the browse
