@@ -1,7 +1,3 @@
-Array.from(document.getElementsByClassName("year")).forEach((el) => {
-  el.textContent = new Date().getFullYear();
-});
-
 /* Native scroll restoration runs before fonts and media settle, then scroll
    anchoring can re-save a slightly shifted value on each reload. Take over so
    reload/back-forward restore the exact saved position after layout settles. */
