@@ -1,15 +1,21 @@
 # Documentation
 
-This directory is the index for durable project documentation.
+This directory indexes maintained project documentation. Treat all tracked content as public.
 
 ## Contents
 
-- [Implementation knowledge](superpowers/README.md): active plans and specifications, durable decisions, and selected completed records.
-- Root [README](../README.md) and [Korean README](../README.ko.md): project overview and deployment guidance.
-- Root [CLAUDE.md](../CLAUDE.md): repository conventions and agent guidance.
+- [Implementation knowledge](superpowers/README.md): active plans and specifications, durable
+  decisions, and selected completed records.
+- Root [README](../README.md) and [Korean README](../README.ko.md): project overview, local preview,
+  and deployment guidance.
+- Root [AGENTS.md](../AGENTS.md): canonical repository and agent guidance.
+- Root [CLAUDE.md](../CLAUDE.md): relative symlink to `AGENTS.md` for compatible tooling.
 
-Executable and conventional project material stays at the repository root: the Go application, `Dockerfile`, Terraform/runtime configuration, `static/`, localized READMEs, and `LICENSE`.
+Executable and conventional project material stays at the repository root: the Pages workflow,
+`static/`, localized READMEs, `AGENTS.md`, its `CLAUDE.md` symlink, and `LICENSE`.
 
 ## Publication note
 
-Tracked documentation is public. Do not add credentials, private infrastructure details, raw logs, or personal data. The contact address already published by the portfolio is an intentional public-contact exception; refer to the site as the source of truth instead of duplicating the address in documentation.
+Tracked documentation must not contain credentials, private keys, cookies, personal exports, or
+unnecessary production-specific identifiers. Temporary raw implementation evidence belongs in
+ignored `.superpowers/` paths and must still be sanitized.

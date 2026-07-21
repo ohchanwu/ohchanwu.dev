@@ -1,60 +1,66 @@
 # ohchanwu.dev
 
-Personal portfolio website for Chanwu (Tyler) Oh.
+Personal portfolio site for Chanwu (Tyler) Oh.
 
 ## Stack
 
-- Go (backend, single binary)
-- Raw HTML/CSS/JS (no framework)
-- Docker / docker-compose for deployment
-- Cloudflare DNS proxied, Full (strict) TLS mode
-- Deployed on EC2 t3.micro (Amazon Linux 2023)
+- Plain HTML, CSS, and browser JavaScript under `static/`
+- GitHub Actions and GitHub Pages for deployment
+- Cloudflare for DNS only
 
 ## Conventions
 
-- Match existing code style; do not introduce new dependencies without asking.
-- Write commit messages in conventional commit format: `feat:`, `fix:`, `chore:`, etc.
-- Do not add comments that restate what code does; only comments that explain _why_.
-- Prefer standard library over third-party packages when reasonable.
-- Tests live alongside the code they test (`foo.go` + `foo_test.go`).
+- Keep the site framework-free and dependency-free unless the owner approves a real need.
+- Preserve English and Korean content and test both language modes after frontend changes.
+- Keep site asset URLs relative to the `static/` publishing root.
+- Preserve keyboard access, reduced-motion behavior, theme behavior, scroll restoration, and the
+  JavaScript-gated media fade.
+- After frontend changes, start or reuse the local preview and run screenshot-led browser QA on
+  desktop and mobile. Check both themes, both languages, console errors, first-party network
+  failures, and representative links.
+- Do not add AI-voice marketing prose to the site or READMEs.
 
 ## Workflow
 
-- Work happens on feature branches, never directly on `main`.
-- Branch naming: `feat/`, `fix/`, `chore/` prefixes.
-- All changes go through PRs; CodeRabbit reviews automatically.
-
-## Out of scope
-
-- Do not generate AI-voice prose for the README or site copy. I write those myself.
-- Do not run deployment commands; I handle deploys.
+- Work on a feature branch and keep commits focused.
+- Run local checks before each commit and inspect the cumulative diff before handoff.
+- Never push or change live deployment settings unless the owner explicitly asks.
 
 ## Project structure
 
-- Documentation index: `docs/README.md`.
-- Tracked implementation knowledge: `docs/superpowers/README.md`.
-- Entry point: `main.go` at repo root.
-- HTTP handlers: in handler files at repo root for now (e.g., `handlers.go`). Move to `internal/` only when it's clearly justified.
-- Templates: `templates/` directory, served via `html/template`.
-- Static assets: `static/` directory (CSS, JS, images), served via `http.FileServer`.
-- Tests live next to the code they test.
+- `.github/workflows/pages.yml`: publishes only `static/` to GitHub Pages.
+- `static/index.html`: site markup and bilingual content.
+- `static/style.css`: responsive layout, themes, and presentation.
+- `static/script.js`: language/theme controls, scroll restoration, and media loading behavior.
+- `static/`: public images, icons, and resume PDFs.
+- `docs/`: maintained architecture, plans, decisions, and selected historical records.
+
+## Local preview
+
+Run:
+
+```sh
+python3 -m http.server 4173 --bind 127.0.0.1 --directory static
+```
+
+Inspect `http://127.0.0.1:4173/` with the prescribed headless browser tooling. Do not open the
+user's default browser.
 
 ## Documentation lifecycle
 
-- Keep durable documentation under `docs/`, organized by subject rather than by generic `plans` or `reports` buckets.
-- Keep active plans, active specifications, durable decisions, and useful completed records under the categories described in `docs/superpowers/README.md`.
-- When work finishes, update maintained documentation, archive only useful durable records, and remove completed material from active categories.
-- Do not scan `docs/superpowers/archive/` during ordinary work. Read its `AGENTS.md` before using historical records.
-- Store temporary SDD work in ignored `.superpowers/sdd/` and sanitized machine-local evidence in ignored `.superpowers/archive/`.
-- Treat tracked files as public. Never record credentials, private operational details, or personal data unless an intentional publication exception is documented.
+- Use `docs/README.md` as the documentation index.
+- Keep active implementation plans and specifications under `docs/superpowers/`.
+- Move useful completed records to the tracked archive only after the implementation and its
+  production verification are complete.
+- Keep raw local reports, screenshots, logs, diffs, and handoff evidence under ignored
+  `.superpowers/` paths.
+- Treat every tracked file as public. Never commit credentials, private keys, cookies, personal
+  exports, or unnecessary production identifiers.
 
-## What "production-ready" means here
+## What production-ready means here
 
-This is a personal portfolio site, not a production service. Skip:
-
-- Elaborate error handling for impossible cases
-- Defensive coding for inputs the site doesn't take
-- Premature abstraction (interfaces with one implementation, etc.)
-- Microservice patterns
-
-Prefer simplicity that someone can read and understand in 30 seconds.
+- The Pages workflow publishes only `static/`.
+- The page works at desktop and mobile widths in English and Korean, in light and dark themes.
+- Local assets load without first-party network failures and the browser console stays clean.
+- Both resume PDFs and representative external links reach the expected content.
+- The custom domain serves over HTTPS after the owner-operated DNS cutover.
