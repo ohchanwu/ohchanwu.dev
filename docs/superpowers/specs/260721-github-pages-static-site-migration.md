@@ -1,6 +1,6 @@
 # GitHub Pages Static Site Migration
 
-**Status:** Design approved; written specification awaiting review
+**Status:** Approved for implementation
 **Created:** 2026-07-21
 
 ## Objective
@@ -48,6 +48,10 @@ Delete the active server implementation and its build inputs:
 - `go.mod`
 - `go.sum`
 - `Dockerfile`
+- `.dockerignore`
+
+Prune Go, Docker, Terraform, and server-runtime entries from `.gitignore` while retaining local
+editor, environment, credential, Gas Town, gstack, and temporary SDD exclusions.
 
 Add `.github/workflows/pages.yml` with `static/` as the only uploaded path. Do not add a `CNAME`
 file: GitHub ignores it for custom Actions deployments and stores the custom domain in repository
@@ -57,7 +61,7 @@ needed for this single-page site.
 Update `README.md`, `README.ko.md`, `AGENTS.md`, and `docs/README.md` so they describe the static
 source, Pages deployment, local preview, and owner-operated cutover. Keep `CLAUDE.md` as the symlink
 to `AGENTS.md`. Remove the footer's entire technology line in both languages without replacing it
-with hosting copy.
+with hosting copy, and remove the now-unused JavaScript that populated its year.
 
 ## Runtime behavior
 

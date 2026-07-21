@@ -15,6 +15,10 @@ Temporary SDD material belongs in ignored `.superpowers/sdd/`. Sanitized raw rep
 
 See [AGENTS.md](AGENTS.md) for lifecycle rules and [archive/AGENTS.md](archive/AGENTS.md) before consulting historical material.
 
+## Active plans
+
+- [GitHub Pages static site migration](plans/260721-github-pages-static-site-migration.md)
+
 ## Active specifications
 
 - [GitHub Pages static site migration](specs/260721-github-pages-static-site-migration.md)
