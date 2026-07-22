@@ -534,11 +534,6 @@ footer {
   }
 }
 
-.copy {
-  color: var(--dim);
-  font-size: 0.8rem;
-}
-
 /* ---------- Entrance ---------- */
 
 .avatar-frame,
