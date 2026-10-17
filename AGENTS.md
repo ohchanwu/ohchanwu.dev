@@ -25,6 +25,9 @@ Personal portfolio site for Chanwu (Tyler) Oh.
 - Work on a feature branch and keep commits focused.
 - Run local checks before each commit and inspect the cumulative diff before handoff.
 - Never push or change live deployment settings unless the owner explicitly asks.
+- Site copy facts and the resume PDFs in `static/` come from the owner's jss-genr harness
+  (`~/projects/jss-genr`). Refresh the PDFs with `make sync-site` in `jss-genr/resume/`
+  instead of editing them here.
 
 ## Project structure
 
