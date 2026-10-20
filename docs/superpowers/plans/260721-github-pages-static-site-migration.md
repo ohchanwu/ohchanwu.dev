@@ -203,8 +203,8 @@ standard-library preview server, gstack `/browse`, Gitleaks.
   external destination below, switch to the opened tab, and confirm the visible destination content
   matches the clicked item rather than merely returning HTTP `200`:
 
-  - `resume-en.pdf`: browser PDF viewer shows the English resume.
-  - `resume-kr.pdf`: browser PDF viewer shows the Korean resume.
+  - `Chanwu_Oh_Resume.pdf`: browser PDF viewer shows the English resume.
+  - `오찬우_이력서.pdf`: browser PDF viewer shows the Korean resume.
   - `https://github.com/ohchanwu`: profile identifies `ohchanwu`.
   - `https://github.com/ohchanwu/job-scraper`: destination identifies the intended project, including
     any legitimate GitHub rename redirect.
@@ -369,8 +369,8 @@ standard-library preview server, gstack `/browse`, Gitleaks.
   test -f static/index.html
   test -f static/style.css
   test -f static/script.js
-  test -f static/resume-en.pdf
-  test -f static/resume-kr.pdf
+  test -f static/Chanwu_Oh_Resume.pdf
+  test -f static/오찬우_이력서.pdf
   test -L CLAUDE.md
   test "$(readlink CLAUDE.md)" = "AGENTS.md"
   git diff --check
