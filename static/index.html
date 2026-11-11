@@ -303,12 +303,14 @@
           <p lang="en">
             <span class="caret">&gt;</span> I also built Jobcron, which gathers
             entry-level developer job postings into one daily briefing and scores
-            each one&rsquo;s fit with AI, quoting the posting for every adjustment.
+            each one&rsquo;s fit with an external AI model under daily spending
+            limits. It is deployed as an invite-only alpha.
           </p>
           <p lang="ko">
             <span class="caret">&gt;</span> 또한 신입 개발자 채용 공고를 매일
-            하나의 브리핑으로 모으고, 공고 원문을 근거로 AI가 적합도를 매기는
-            Jobcron을 개발했습니다.
+            하나의 브리핑으로 모으고, 일일 비용 한도 안에서 외부 AI 모델로
+            공고마다 적합도를 매기는 Jobcron을 개발해 초대 전용 알파로
+            배포했습니다.
           </p>
           <p lang="en">
             <span class="caret">&gt;</span> I&rsquo;m in SSAFY&rsquo;s 16th cohort,
@@ -364,6 +366,20 @@
                 Go와 Docker로 재구축했습니다.
               </p>
               <p class="entry-desc" lang="en">
+                Online booking has been live since November 7, 2026. The server
+                imports the clinic&rsquo;s
+                <strong>WebPT schedule every five minutes</strong> and computes
+                bookable times per therapist; when the data is stale or unsafe,
+                it answers 503 with a reason and the booking page falls back to
+                the request form.
+              </p>
+              <p class="entry-desc" lang="ko">
+                2026년 11월 7일부터 온라인 예약을 운영하고 있습니다. 서버가
+                클리닉의 <strong>WebPT 일정을 5분마다</strong> 가져와 치료사별
+                예약 가능 시간을 계산하고, 데이터가 오래됐거나 안전하지 않으면
+                사유와 함께 503을 반환해 예약 요청 폼으로 전환합니다.
+              </p>
+              <p class="entry-desc" lang="en">
                 A non-technical staff member needed to publish site changes with
                 AI agents, without backend or cloud access, while the
                 redirects, analytics, and form fallbacks the Go server handled
@@ -372,7 +388,8 @@
                 its route, form, and link contracts, enforced by Python checks,
                 a browser smoke test, a CI gate, and Gitleaks. Changes now ship
                 through pull requests with Amplify previews, and a clinic staff
-                member has shipped a form fix this way.
+                member has authored and merged 15 of their own pull requests
+                this way between October 13 and November 10, 2026.
               </p>
               <p class="entry-desc" lang="ko">
                 비개발자 직원이 백엔드와 클라우드 접근 없이 AI 에이전트로 사이트를
@@ -381,8 +398,8 @@
                 <strong>Cloudflare Worker 뒤의 AWS Amplify</strong>로 배포하고,
                 라우트와 폼, 링크 계약을 고정해 Python 검사, 브라우저 스모크
                 테스트, CI 게이트, Gitleaks로 강제했습니다. 지금은 PR과 Amplify
-                미리보기로 변경이 배포되며, 클리닉 직원이 이 방식으로 폼 수정을
-                직접 배포했습니다.
+                미리보기로 변경이 배포되며, 클리닉 직원이 이 방식으로 2026년 10월
+                13일부터 11월 10일까지 본인 PR 15건을 직접 작성하고 병합했습니다.
               </p>
               <p class="entry-desc" lang="en">
                 In April 2026, the site went down for 2 hours 54 minutes while
@@ -433,23 +450,26 @@
                 Gathers entry-level developer postings from Korean job boards
                 into one daily briefing, with an
                 <strong>explained fit score</strong> for each post. A Go binary
-                runs on <strong>EC2 and private RDS managed with Terraform</strong>,
-                and a release ships only after an encrypted backup restores.
-                Two-stage LLM scoring requires every adjustment to quote the
-                posting, with capped deltas, a token budget, caching, and a
-                deterministic fallback. Built through harness engineering with
-                multiple AI agents.
+                runs as an invite-only alpha on
+                <strong>EC2 and private RDS managed with Terraform</strong>, and
+                a release ships only after an encrypted backup restores. The
+                server asks an external question-answering model (TypeSafe Jev)
+                fixed yes/no and scored questions about each post through an API,
+                under <strong>per-user and total daily US-dollar limits</strong>,
+                with a deterministic fallback. Built through harness engineering
+                with multiple AI agents.
               </p>
               <p class="entry-desc" lang="ko">
                 국내 채용 포털에 흩어진 신입 공고를 매일 하나의 브리핑으로 모으고,
                 공고마다 <strong>근거가 설명된 적합도 점수</strong>를 제공합니다.
                 Go 바이너리를
-                <strong>Terraform으로 관리하는 EC2와 프라이빗 RDS</strong>에
-                배포했고, 암호화 백업 복원에 성공해야 릴리스를 승인합니다. 2단계
-                LLM 평가에서는 모든 점수 조정이 공고 원문을 인용해야 하며, 조정 폭
-                상한과 토큰 예산, 캐싱, 결정론적 폴백으로 비용과 실패를
-                제어합니다. 여러 AI 에이전트를 활용한 하네스 엔지니어링으로
-                개발했습니다.
+                <strong>Terraform으로 관리하는 EC2와 프라이빗 RDS</strong>에 초대
+                전용 알파로 배포했고, 암호화 백업 복원에 성공해야 릴리스를
+                승인합니다. 서버가 외부 질의응답 모델(TypeSafe Jev)을 API로 호출해
+                공고마다 정해진 예/아니요 질문과 점수 질문에 답하게 하며,
+                <strong>사용자별, 전체 일일 USD 한도</strong> 안에서 운영하고
+                결정론적 폴백을 제공합니다. 여러 AI 에이전트를 활용한 하네스
+                엔지니어링으로 개발했습니다.
               </p>
             </div>
           </li>
