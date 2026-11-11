@@ -158,9 +158,6 @@
           </p>
           <p class="line" lang="en">
             <span class="caret">&gt;</span> Seongnam &nbsp;&middot;&nbsp; 2026
-            &nbsp;&middot;&nbsp;
-            <span class="status-dot" aria-hidden="true">●</span>
-            <span class="status-text">available</span>
           </p>
           <p class="line stack-line" lang="ko">
             <span class="caret">&gt;</span> 인프라: AWS, Docker, Terraform,
@@ -174,9 +171,6 @@
           </p>
           <p class="line" lang="ko">
             <span class="caret">&gt;</span> 성남 &nbsp;&middot;&nbsp; 2026
-            &nbsp;&middot;&nbsp;
-            <span class="status-dot" aria-hidden="true">●</span>
-            <span class="status-text">근무 가능</span>
           </p>
         </div>
 
@@ -292,13 +286,14 @@
           </p>
           <p lang="en">
             <span class="caret">&gt;</span> Under a freelance contract, I design,
-            build, deploy, and operate a New York PT clinic&rsquo;s web service on
-            my own: a Go and MySQL backend on AWS, behind Cloudflare.
+            build, deploy, and operate the backend and infrastructure of a New
+            York PT clinic&rsquo;s web service on my own: Go and MySQL on AWS,
+            behind Cloudflare.
           </p>
           <p lang="ko">
             <span class="caret">&gt;</span> 뉴욕 물리치료 클리닉과 프리랜서 계약을
-            맺고, AWS 위의 Go와 MySQL 백엔드부터 Cloudflare까지 웹 서비스 전체를
-            혼자 설계, 구축, 배포, 운영하고 있습니다.
+            맺고, Cloudflare 뒤 AWS에서 동작하는 Go와 MySQL 기반 웹 서비스의
+            백엔드와 인프라를 단독으로 설계, 구축, 배포, 운영하고 있습니다.
           </p>
           <p lang="en">
             <span class="caret">&gt;</span> I also built Jobcron, which gathers
@@ -313,7 +308,7 @@
             하나의 브리핑으로 모으고, 일일 비용 한도 안에서 외부 AI 모델로
             공고마다 적합도를 매기는 Jobcron을 개발해 배포했고, 현재 초대 전용
             베타로 운영하고 있습니다. 계정 없이도 누구나 전체 공고를 볼 수 있고,
-            맞춤 기능은 접근 코드로 만든 계정에서 씁니다.
+            맞춤 기능은 초대 코드로 만든 계정에서 씁니다.
           </p>
           <p lang="en">
             <span class="caret">&gt;</span> I&rsquo;m in SSAFY&rsquo;s 16th cohort,
@@ -355,15 +350,16 @@
               >
               <p class="entry-desc" lang="en">
                 Under a freelance contract, I design, build, deploy, and operate
-                a New York physical therapy clinic&rsquo;s web service on my own.
+                the backend and infrastructure of a New York physical therapy
+                clinic&rsquo;s web service on my own.
                 Squarespace limited UI customization and slowed page responses,
                 so I won the move to AWS with a
                 <strong>working GitHub Pages demo</strong> and rebuilt the site
                 in Go with Docker.
               </p>
               <p class="entry-desc" lang="ko">
-                미국 물리치료 클리닉과 프리랜서 계약을 맺고, 웹 서비스 전체를 혼자
-                설계, 구축, 배포, 운영하고 있습니다. Squarespace는 UI
+                미국 물리치료 클리닉과 프리랜서 계약을 맺고, 웹 서비스의 백엔드와
+                인프라를 단독으로 설계, 구축, 배포, 운영하고 있습니다. Squarespace는 UI
                 커스터마이징에 제약이 있었고 페이지 응답이 느렸기 때문에,
                 <strong>작동하는 GitHub Pages 데모</strong>로 AWS 이전을 설득한 뒤
                 Go와 Docker로 재구축했습니다.
@@ -371,14 +367,14 @@
               <p class="entry-desc" lang="en">
                 Online booking has been live since November 7, 2026. The server
                 imports the clinic&rsquo;s
-                <strong>WebPT schedule every five minutes</strong> and computes
+                <strong>WebPT schedule at five-minute intervals</strong> and computes
                 bookable times per therapist; when the data is stale or unsafe,
                 it answers 503 with a reason and the booking page falls back to
                 the request form.
               </p>
               <p class="entry-desc" lang="ko">
                 2026년 11월 7일부터 온라인 예약을 운영하고 있습니다. 서버가
-                클리닉의 <strong>WebPT 일정을 5분마다</strong> 가져와 치료사별
+                클리닉의 <strong>WebPT 일정을 5분 간격으로</strong> 가져와 치료사별
                 예약 가능 시간을 계산하고, 데이터가 오래됐거나 안전하지 않으면
                 사유와 함께 503을 반환해 예약 요청 폼으로 전환합니다.
               </p>
@@ -389,10 +385,11 @@
                 kept working. I split the site into its own repository on
                 <strong>AWS Amplify behind a Cloudflare Worker</strong> and froze
                 its route, form, and link contracts, enforced by Python checks,
-                a browser smoke test, a CI gate, and Gitleaks. Changes now ship
-                through pull requests with Amplify previews, and a clinic staff
-                member has authored and merged 15 of their own pull requests
-                this way between October 13 and November 10, 2026.
+                a browser smoke test, and a CI gate, with a Gitleaks scan required
+                before a change is handed off. Changes now ship through pull
+                requests with Amplify previews: 17 pull requests authored by a
+                clinic staff member were merged this way between October 13 and
+                November 10, 2026.
               </p>
               <p class="entry-desc" lang="ko">
                 비개발자 직원이 백엔드와 클라우드 접근 없이 AI 에이전트로 사이트를
@@ -400,9 +397,10 @@
                 폴백은 그대로 지켜야 했습니다. 사이트를 별도 저장소로 분리해
                 <strong>Cloudflare Worker 뒤의 AWS Amplify</strong>로 배포하고,
                 라우트와 폼, 링크 계약을 고정해 Python 검사, 브라우저 스모크
-                테스트, CI 게이트, Gitleaks로 강제했습니다. 지금은 PR과 Amplify
-                미리보기로 변경이 배포되며, 클리닉 직원이 이 방식으로 2026년 10월
-                13일부터 11월 10일까지 본인 PR 15건을 직접 작성하고 병합했습니다.
+                테스트, CI 게이트로 강제하고, 변경을 넘기기 전에 Gitleaks 검사를
+                거치게 했습니다. 지금은 PR과 Amplify 미리보기로 변경이 배포되며,
+                2026년 10월 13일부터 11월 10일까지 클리닉 직원이 작성한 PR 17건이
+                이 방식으로 병합됐습니다.
               </p>
               <p class="entry-desc" lang="en">
                 In April 2026, the site went down for 2 hours 54 minutes while
@@ -446,8 +444,9 @@
                 into one daily briefing, with an
                 <strong>explained fit score</strong> for each post. A Go binary
                 runs as an invite-only beta on
-                <strong>EC2 and private RDS managed with Terraform</strong>, and
-                a release ships only after an encrypted backup restores. The
+                <strong>EC2 and private RDS managed with Terraform</strong>; its
+                first production deployment was gated on restoring an encrypted
+                backup. The
                 server asks an external question-answering model (TypeSafe Jev)
                 fixed yes/no and scored questions about each post through an API,
                 under <strong>per-user and total daily US-dollar limits</strong>,
@@ -459,8 +458,8 @@
                 공고마다 <strong>근거가 설명된 적합도 점수</strong>를 제공합니다.
                 Go 바이너리를
                 <strong>Terraform으로 관리하는 EC2와 프라이빗 RDS</strong>에 배포해
-                초대 전용 베타로 운영하며, 암호화 백업 복원에 성공해야 릴리스를
-                승인합니다. 서버가 외부 질의응답 모델(TypeSafe Jev)을 API로 호출해
+                초대 전용 베타로 운영하며, 첫 운영 배포는 암호화 백업 복원에
+                성공한 뒤 승인했습니다. 서버가 외부 질의응답 모델(TypeSafe Jev)을 API로 호출해
                 공고마다 정해진 예/아니요 질문과 점수 질문에 답하게 하며,
                 <strong>사용자별, 전체 일일 USD 한도</strong> 안에서 운영하고
                 결정론적 폴백을 제공합니다. 여러 AI 에이전트를 활용한 하네스
@@ -477,23 +476,16 @@
                 >Alix Chaput Architecture</a
               >
               <p class="entry-desc" lang="en">
-                Built a French architect's portfolio site so it would stay
-                consistent across desktop, tablet, and mobile. Large images were
-                slowing down the page, and each screen size needed a stable
-                layout, so I created a
-                <strong>responsive layout with CSS breakpoints and JavaScript</strong>
-                and converted images to WebP. I deployed it on GitHub Pages to
-                avoid separate domain costs, and the project taught me why a
-                declarative framework like React is useful for complex UI state.
+                My first client project: a French architect&rsquo;s portfolio
+                site, which I hand-coded with a
+                <strong>responsive layout built on CSS breakpoints</strong>. I
+                converted the images to WebP and deployed the site on GitHub
+                Pages.
               </p>
               <p class="entry-desc" lang="ko">
-                프랑스 건축가 포트폴리오 사이트를 데스크톱, 태블릿, 모바일에서
-                일관되게 보이도록 구현했습니다. 큰 이미지 용량으로 로딩이
-                느렸고, 화면 크기별 레이아웃 유지가 필요했기 때문에
-                <strong>CSS breakpoint와 JavaScript로 반응형 레이아웃</strong>을
-                만들고 이미지를 WebP로 변환했습니다. GitHub Pages에 배포해 별도
-                도메인 비용 없이 운영했고, 이 과정에서 복잡한 화면 상태에는
-                React 같은 선언형 프레임워크가 유용하다는 점을 체감했습니다.
+                첫 클라이언트 프로젝트로 프랑스 건축가의 포트폴리오 사이트를 직접
+                코딩했습니다. <strong>CSS breakpoint로 반응형 레이아웃</strong>을
+                만들고, 이미지를 WebP로 변환해 GitHub Pages에 배포했습니다.
               </p>
             </div>
           </li>
@@ -515,15 +507,12 @@
                 >freeCodeCamp/freeCodeCamp #66981</a
               >
               <p class="entry-desc" lang="en">
-                Corrected a WeakSet example in the JavaScript curriculum that
-                incorrectly used object literals as
-                <code>.add()</code> arguments and a string as a
-                <code>.has()</code> argument.
+                Corrected inaccurate content in the WeakSet lesson of the
+                JavaScript curriculum.
               </p>
               <p class="entry-desc" lang="ko">
-                JavaScript 커리큘럼의 WeakSet 예제에서 <code>.add()</code>에
-                전달된 객체 리터럴과 <code>.has()</code>에 전달된 문자열이
-                WeakSet 예제가 실제로 작동하지 않던 문제를 수정했습니다.
+                JavaScript 커리큘럼의 WeakSet 레슨에서 잘못된 설명을
+                바로잡았습니다.
               </p>
             </div>
           </li>
