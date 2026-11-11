@@ -294,13 +294,16 @@
             <span class="caret">&gt;</span> I built Jobcron, which gathers
             entry-level developer job postings into one daily briefing and scores
             each one&rsquo;s fit with an external AI model under daily spending
-            limits. It is deployed and now runs as an invite-only beta.
+            limits. It is deployed and now runs as an invite-only beta. Anyone
+            can browse all listings without an account; the personalized
+            features work in an account, which is created with an access code.
           </p>
           <p lang="ko">
             <span class="caret">&gt;</span> 신입 개발자 채용 공고를 매일 하나의
             브리핑으로 모으고, 일일 비용 한도 안에서 외부 AI 모델로 공고마다
             적합도를 매기는 Jobcron을 개발해 배포했고, 현재 초대 전용 베타로
-            운영하고 있습니다.
+            운영하고 있습니다. 계정 없이도 누구나 전체 공고를 볼 수 있고, 맞춤
+            기능은 접근 코드로 만든 계정에서 씁니다.
           </p>
           <p lang="en">
             <span class="caret">&gt;</span> Under a freelance contract, I also
@@ -348,14 +351,6 @@
             <span class="key">2026-now</span>
             <div class="entry">
               <a href="https://jobcron.app" class="entry-title">Jobcron</a>
-              <span class="entry-link"
-                ><span aria-hidden="true">&middot;</span
-                ><a
-                  href="https://github.com/ohchanwu/jobcron"
-                  aria-label="Jobcron source code on GitHub"
-                  >GitHub</a
-                ></span
-              >
               <p class="entry-desc" lang="en">
                 Gathers entry-level developer postings from Korean job boards
                 into one daily briefing, with an
@@ -403,9 +398,10 @@
                 screenshots, alongside my own requests. An orchestrator agent
                 specified them as 28 items with a plan; after my approval, worker
                 and reviewer agents implemented and reviewed the work card by
-                card. It shipped through application-only deploys and a migration
-                release after a manual RDS snapshot on November 6. These changes
-                were merged by November 8 and deployed:
+                card. It shipped in two releases: an application-only release on
+                November 6, and a migration release after a manual RDS snapshot on
+                November 7, which became the beta release. These changes were
+                merged by November 8 and deployed:
                 <strong>listing cards with salary, location, and stack</strong>,
                 wanted and unwanted conditions with signed points, saved filters,
                 admin tools, and a redesign chosen with friends.
@@ -415,8 +411,9 @@
                 그리고 제 요청을 반영해야 했습니다. 오케스트레이터 에이전트가
                 피드백을 28개 항목의 스펙과 계획으로 정리했고, 제가 승인한 뒤
                 작업자 에이전트와 리뷰어 에이전트가 카드 단위로 구현하고
-                검토했습니다. 애플리케이션만 바꾸는 배포와, 수동 RDS 스냅샷 뒤의
-                마이그레이션 릴리스(11월 6일)로 나눠 반영했습니다. 그 결과
+                검토했습니다. 애플리케이션만 바꾸는 릴리스(11월 6일)와, 수동 RDS
+                스냅샷 뒤의 마이그레이션 릴리스(11월 7일)로 나눠 반영했고, 11월 7일
+                릴리스가 베타 릴리스가 되었습니다. 그 결과
                 <strong>연봉, 위치, 기술스택을 보여 주는 공고 카드</strong>, 점수가
                 붙은 선호 조건과 비선호 조건, 저장 필터, 관리자 도구, 지인들과
                 함께 고른 새 디자인을 11월 8일까지 병합해 배포했습니다.
