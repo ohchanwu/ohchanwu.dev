@@ -336,7 +336,7 @@
           >
           <span class="section-note" lang="ko"
             >자세한 사항은
-            <a href="https://github.com/ohchanwu">GitHub</a> 아니면
+            <a href="https://github.com/ohchanwu">GitHub</a> 또는
             <a href="오찬우_이력서.pdf" target="_blank" rel="noopener">이력서</a>
             참고 부탁드립니다</span
           >
@@ -450,8 +450,16 @@
                 server asks an external question-answering model (TypeSafe Jev)
                 fixed yes/no and scored questions about each post through an API,
                 under <strong>per-user and total daily US-dollar limits</strong>,
-                with a deterministic fallback. Built through harness engineering
-                with multiple AI agents.
+                with a deterministic fallback. After a SSAFY classmate using the
+                alpha said the AI points were hard to trust without evidence from
+                the posting, each condition line that changes the score has shown,
+                since November 6, 2026,
+                <strong>evidence sentences quoted unchanged from the posting</strong>,
+                or a label when none is chosen. The model cannot write text, so it
+                chooses sentence numbers; working with an orchestrator agent, I
+                chose this design after 7 measurement runs on 3 postings, and AI
+                agents wrote the measurement code and the feature. Built through
+                harness engineering with multiple AI agents.
               </p>
               <p class="entry-desc" lang="ko">
                 국내 채용 포털에 흩어진 신입 공고를 매일 하나의 브리핑으로 모으고,
@@ -462,8 +470,15 @@
                 성공한 뒤 승인했습니다. 서버가 외부 질의응답 모델(TypeSafe Jev)을 API로 호출해
                 공고마다 정해진 예/아니요 질문과 점수 질문에 답하게 하며,
                 <strong>사용자별, 전체 일일 USD 한도</strong> 안에서 운영하고
-                결정론적 폴백을 제공합니다. 여러 AI 에이전트를 활용한 하네스
-                엔지니어링으로 개발했습니다.
+                결정론적 폴백을 제공합니다. 알파를 쓰던 SSAFY 동기 한 명에게서
+                공고 속 근거가 없어 AI 점수를 믿기 어렵다는 피드백을 받은 뒤,
+                2026년 11월 6일부터 점수를 바꾸는 조건 줄마다
+                <strong>공고 원문 그대로의 근거 문장</strong>을, 고른 문장이 없으면
+                안내 문구를 보여 줍니다. 텍스트를 쓸 수 없는 모델이 문장 번호를
+                고르는 이 설계는 오케스트레이터 에이전트와 함께 공고 3건으로
+                7차례 측정한 뒤 제가 정했고, 측정 코드와 기능은 AI 에이전트가
+                작성했습니다. 여러 AI 에이전트를 활용한 하네스 엔지니어링으로
+                개발했습니다.
               </p>
             </div>
           </li>
