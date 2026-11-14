@@ -487,14 +487,31 @@ p {
   font-weight: 500;
 }
 
-.entry-desc a {
+.entry-desc .entry-label {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.entry-block-title {
+  color: var(--fg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: 0.9rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.entry-desc a,
+.entry-block-title a {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }
 
-.entry-desc a:hover {
+.entry-desc a:hover,
+.entry-block-title a:hover {
   color: var(--fg-bright);
 }
 

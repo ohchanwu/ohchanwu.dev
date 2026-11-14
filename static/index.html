@@ -347,125 +347,145 @@
             <div class="entry">
               <a href="https://jobcron.app" class="entry-title">Jobcron</a>
               <p class="entry-desc" lang="en">
-                Gathers entry-level developer postings from Korean job boards
-                into one daily briefing, with an
-                <strong>explained fit score</strong> for each post. A Go binary
-                runs as an invite-only beta on
-                <strong>EC2 and private RDS (PostgreSQL) managed with
-                Terraform</strong>; its first production deployment was gated on
-                restoring an encrypted backup. Built through harness engineering
-                with multiple AI agents.
+                <strong class="entry-label">Goal:</strong> Jobcron gathers
+                entry-level developer postings from Korean job boards into one
+                daily briefing, with an explained fit score for each post.
+                <strong class="entry-label">Infra:</strong> A Go binary runs as
+                an invite-only beta on EC2 and private RDS (PostgreSQL) managed
+                with Terraform, and its first production deployment was gated on
+                restoring an encrypted backup. It was built through harness
+                engineering with multiple AI agents.
               </p>
               <p class="entry-desc" lang="ko">
-                국내 채용 포털에 흩어진 신입 공고를 매일 하나의 브리핑으로 모으고,
-                공고마다 <strong>근거가 설명된 적합도 점수</strong>를 제공합니다.
-                Go 바이너리를
-                <strong>Terraform으로 관리하는 EC2와 프라이빗 RDS(PostgreSQL)</strong>에
-                배포해 초대 전용 베타로 운영하며, 첫 운영 배포는 암호화 백업 복원에
-                성공한 뒤 승인했습니다. 여러 AI 에이전트를 활용한 하네스 엔지니어링으로
-                개발했습니다.
+                <strong class="entry-label">목적:</strong> 국내 채용 포털에 흩어진
+                신입 공고를 매일 하나의 브리핑으로 모으고, 공고마다 근거가 설명된
+                적합도 점수를 제공합니다.
+                <strong class="entry-label">구조:</strong> Go 바이너리를
+                Terraform으로 관리하는 EC2와 프라이빗 RDS(PostgreSQL)에 배포해
+                초대 전용 베타로 운영하며, 첫 운영 배포는 암호화 백업 복원에
+                성공한 뒤 승인했습니다. 여러 AI 에이전트를 활용한 하네스
+                엔지니어링으로 개발했습니다.
               </p>
+              <h3 class="entry-block-title" lang="en">
+                AI Fit Scoring under Daily Spending Limits
+              </h3>
+              <h3 class="entry-block-title" lang="ko">
+                일일 비용 한도 안에서 동작하는 AI 적합도 평가
+              </h3>
               <p class="entry-desc" lang="en">
-                AI scoring used to need each user&rsquo;s own LLM API key, and
-                every post had to be scored quickly and cheaply. I chose an
+                <strong class="entry-label">Problem:</strong> AI scoring used to
+                need each user&rsquo;s own LLM API key, and every post had to be
+                scored quickly and cheaply.
+                <strong class="entry-label">Analysis:</strong> I chose an
                 external question-answering model (TypeSafe Jev) for speed and
                 cost: a paid probe on 30 synthetic posts measured a median
-                0.54&nbsp;s and about USD 0.00013 per post. The server now asks it
+                0.54&nbsp;s and about USD 0.00013 per post.
+                <strong class="entry-label">Solution:</strong> The server asks it
                 fixed yes/no and scored questions about each post through an API,
-                under <strong>per-user and total daily US-dollar limits</strong>,
-                with a deterministic fallback. It has been in production since
-                October 30, 2026, and users no longer need an API key of their
-                own.
+                under per-user and total daily US-dollar limits, with a
+                deterministic fallback.
+                <strong class="entry-label">Result:</strong> It has been in
+                production since October 30, 2026, and users no longer need an
+                API key of their own.
               </p>
               <p class="entry-desc" lang="ko">
-                예전에는 사용자가 직접 LLM API 키를 넣어야 AI 평가를 받을 수
-                있었고, 모든 공고를 빠르고 저렴하게 평가해야 했습니다. 속도와
-                비용을 기준으로 외부 질의응답 모델(TypeSafe Jev)을 골랐고, 합성
-                공고 30개로 유료 측정한 결과 공고당 중앙값 0.54초, 약 USD
-                0.00013이 나왔습니다. 이제 서버가 API로 공고마다 정해진 예/아니요
-                질문과 점수 질문을 보내고,
-                <strong>사용자별, 전체 일일 USD 한도</strong> 안에서 운영하며
-                결정론적 폴백을 제공합니다. 2026년 10월 30일부터 운영 중이며,
-                사용자는 자신의 API 키 없이 평가를 받습니다.
+                <strong class="entry-label">문제:</strong> 예전에는 사용자가 직접
+                LLM API 키를 넣어야 AI 평가를 받을 수 있었고, 모든 공고를 빠르고
+                저렴하게 평가해야 했습니다.
+                <strong class="entry-label">분석:</strong> 속도와 비용을 기준으로
+                외부 질의응답 모델(TypeSafe Jev)을 골랐고, 합성 공고 30개로 유료
+                측정한 결과 공고당 중앙값 0.54초, 약 USD 0.00013이 나왔습니다.
+                <strong class="entry-label">해결:</strong> 서버가 API로 공고마다
+                정해진 예/아니요 질문과 점수 질문을 보내고, 사용자별, 전체 일일
+                USD 한도 안에서 운영하며 결정론적 폴백을 제공합니다.
+                <strong class="entry-label">결과:</strong> 2026년 10월 30일부터
+                운영 중이며, 사용자는 자신의 API 키 없이 평가를 받습니다.
               </p>
+              <h3 class="entry-block-title" lang="en">
+                Alpha-User Feedback to Shipped Releases
+              </h3>
+              <h3 class="entry-block-title" lang="ko">
+                알파 사용자 피드백을 릴리스로 반영
+              </h3>
               <p class="entry-desc" lang="en">
-                On November 3, 2026, SSAFY classmates using the alpha sent feedback and
-                screenshots, alongside my own requests. An orchestrator agent
-                specified them as 28 items with a plan; after my approval, worker
-                and reviewer agents implemented and reviewed the work card by
-                card. It shipped in two releases: an application-only release on
-                November 6, and a migration release after a manual RDS snapshot on
-                November 7, which became the beta release. These changes were
-                merged by November 8 and deployed:
-                <strong>listing cards with salary, location, and stack</strong>,
-                wanted and unwanted conditions with signed points, saved filters,
-                admin tools, and a redesign chosen with SSAFY classmates.
+                <strong class="entry-label">Problem:</strong> On November 3,
+                2026, SSAFY classmates using the alpha sent feedback and
+                screenshots, alongside my own requests.
+                <strong class="entry-label">Solution:</strong> An orchestrator
+                agent specified them as 28 items with a plan; after my approval,
+                worker and reviewer agents implemented and reviewed the work.
+                <strong class="entry-label">Release:</strong> It shipped in two
+                releases: an application-only release on November 6, and a
+                migration release after a manual RDS snapshot on November 7,
+                which became the beta release.
+                <strong class="entry-label">Result:</strong> By the November 8
+                update, these changes were deployed: listing cards with salary,
+                location, and stack, wanted and unwanted conditions with signed
+                points, saved filters, admin tools, and a redesign chosen with
+                SSAFY classmates.
               </p>
               <p class="entry-desc" lang="ko">
-                2026년 11월 3일, 알파를 쓰던 SSAFY 동기들이 보낸 피드백과 스크린샷,
-                그리고 제 요청을 반영해야 했습니다. 오케스트레이터 에이전트가
-                피드백을 28개 항목의 스펙과 계획으로 정리했고, 제가 승인한 뒤
-                작업자 에이전트와 리뷰어 에이전트가 카드 단위로 구현하고
-                검토했습니다. 애플리케이션만 바꾸는 릴리스(11월 6일)와, 수동 RDS
-                스냅샷 뒤의 마이그레이션 릴리스(11월 7일)로 나눠 반영했고, 11월 7일
-                릴리스가 베타 릴리스가 되었습니다. 그 결과
-                <strong>연봉, 위치, 기술스택을 보여 주는 공고 카드</strong>, 점수가
-                붙은 선호 조건과 비선호 조건, 저장 필터, 관리자 도구, SSAFY 동기들과
-                함께 고른 새 디자인을 11월 8일까지 병합해 배포했습니다.
+                <strong class="entry-label">문제:</strong> 2026년 11월 3일, 알파를
+                쓰던 SSAFY 동기들이 보낸 피드백과 스크린샷, 그리고 제 요청을
+                반영해야 했습니다.
+                <strong class="entry-label">해결:</strong> 오케스트레이터
+                에이전트가 피드백을 28개 항목의 스펙과 계획으로 정리했고, 제가
+                승인한 뒤 작업자 에이전트와 리뷰어 에이전트가 구현하고
+                검토했습니다.
+                <strong class="entry-label">배포:</strong> 애플리케이션만 바꾸는
+                릴리스(11월 6일)와 수동 RDS 스냅샷 뒤의 마이그레이션 릴리스(11월
+                7일)로 나눠 반영했고, 11월 7일 릴리스가 베타 릴리스가
+                되었습니다.
+                <strong class="entry-label">결과:</strong> 11월 8일 업데이트까지
+                연봉, 위치, 기술스택을 보여 주는 공고 카드, 점수가 붙은 선호
+                조건과 비선호 조건, 저장 필터, 관리자 도구, SSAFY 동기들과 함께
+                고른 새 디자인을 배포했습니다.
               </p>
+              <h3 class="entry-block-title" lang="en">
+                Evidence Sentences for AI Ratings
+              </h3>
+              <h3 class="entry-block-title" lang="ko">AI 점수의 근거 문장</h3>
               <p class="entry-desc" lang="en">
-                One SSAFY classmate using the alpha said the points the AI added
-                or removed for each condition were hard to trust, because the
-                screen showed only the points and the condition the user had
-                entered, with no evidence from the posting. The model answers only
-                choice and score questions and cannot write text, so Jobcron splits
-                each posting into numbered sentences, the model chooses sentence
-                numbers, and, since November 6, 2026, each condition line that
-                changes the score has shown
-                <strong>those posting sentences unchanged</strong> as evidence.
-                Working with an orchestrator agent, I proposed the designs, carried out
-                7 measurement runs on 3 postings and made every decision, with the
-                rule for judging each run written before it from the second run
-                on; AI agents wrote the measurement code and the feature. Sentence
-                text as answer options made the input up to 25.9 times that of the
-                rating questions alone, because every question carried all the
-                sentences again; sections of five sentences found a sentence for 0
-                of 26 lines; and numbered text inside the rating request changed 12
-                of 90 rating answers. Leaving the rating request unchanged, a
-                second request that states each rating and asks only for its main
-                reason found a sentence for 21 of 25 lines and cannot change the
-                rating; I chose it after reviewing the data, although it missed one
-                criterion of its rule, which compared counts of sentences marked
-                weak without dividing by the number of sentences found. The model
-                also returns a probability for every option with no extra question
-                or request, so the line shows sentences from the highest
-                probability down until they add up to 0.7 (the smallest measured
-                value that passed its rule), at most 5, or a label when none is
-                chosen.
+                <strong class="entry-label">Problem:</strong> One alpha user said
+                the points the AI added or removed for each condition were hard
+                to trust, because the screen showed only the points and the
+                condition the user had entered, with no evidence from the
+                posting.
+                <strong class="entry-label">Analysis:</strong> The model answers
+                only choice and score questions and cannot write text. Working
+                with an orchestrator agent, I proposed the designs, carried out 7
+                measurement runs on 3 postings and made every decision; AI agents
+                wrote the measurement code and the feature.
+                <strong class="entry-label">Solution:</strong> Jobcron splits
+                each posting into numbered sentences, and a second request that
+                states each rating and asks only for its main reason chooses the
+                sentence numbers; it cannot change the rating and found a
+                sentence for 21 of 25 lines. The model also returns a probability
+                for every option, so the line shows sentences from the highest
+                probability down until they add up to 0.7, at most 5, or a label
+                when none is chosen.
+                <strong class="entry-label">Result:</strong> Since November 6,
+                2026, each condition line that changes the score has shown those
+                posting sentences unchanged as evidence.
               </p>
               <p class="entry-desc" lang="ko">
-                알파를 쓰던 SSAFY 동기 한 명은 화면에 점수와 사용자가 입력한 조건만
-                있고 공고에서 나온 근거가 없어, 조건마다 AI가 더하거나 뺀 점수를
-                믿기 어렵다고 했습니다. 모델이 선택 질문과 점수 질문에만 답하고
-                텍스트를 쓸 수 없기 때문에, 공고를 문장으로 나눠 번호를 붙이고
-                모델이 번호를 고르게 했으며, 2026년 11월 6일부터 점수를 바꾸는 조건
-                줄마다 <strong>고른 공고 문장을 원문 그대로</strong> 근거로 보여
-                줍니다. 오케스트레이터 에이전트와 함께 제가 설계를 제안하고 공고
-                3건으로 7차례 측정해 모든 결정을 내렸고, 두 번째 측정부터는 측정
-                전에 판단 규칙이 기록되었으며, 측정 코드와 기능은 AI 에이전트가
-                작성했습니다. 문장 원문을 선택지로 주면 질문마다 모든 문장이 다시
-                들어가 입력이 평가 질문만 보낼 때의 최대 25.9배가 되었고, 5문장씩
-                묶은 구역을 먼저 고르게 하면 문장을 찾은 줄이 26줄 중 0줄이었으며,
-                번호를 붙인 원문을 평가 요청에 넣으면 평가 답변 90개 중 12개가
-                바뀌었습니다. 평가 요청은 그대로 두고 두 번째 요청에서 평가를 알려
-                준 뒤 주된 근거 문장만 묻는 설계는 25줄 중 21줄에서 문장을 찾았고
-                평가를 바꿀 수 없습니다. 이 설계는 근거가 약한 문장의 개수를 찾은
-                문장 수로 나누지 않고 비교한 판단 규칙에서 기준 하나를 충족하지
-                못했지만, 저는 데이터를 검토한 뒤 이 설계를 골랐습니다. 모델이
-                선택지마다 확률도 함께 돌려주므로, 질문이나 요청을 늘리지 않고
-                확률이 높은 문장부터 합이 0.7(측정한 값 중 규칙을 통과한 가장 작은
-                값)이 될 때까지 최대 5개를,
+                <strong class="entry-label">문제:</strong> 알파 사용자 한 명은
+                화면에 점수와 사용자가 입력한 조건만 있고 공고에서 나온 근거가
+                없어, 조건마다 AI가 더하거나 뺀 점수를 믿기 어렵다고 했습니다.
+                <strong class="entry-label">분석:</strong> 모델은 선택 질문과
+                점수 질문에만 답하고 텍스트를 쓸 수 없습니다. 오케스트레이터
+                에이전트와 함께 제가 설계를 제안하고 공고 3건으로 7차례 측정해
+                모든 결정을 내렸으며, 측정 코드와 기능은 AI 에이전트가
+                작성했습니다.
+                <strong class="entry-label">해결:</strong> 공고를 문장으로 나눠
+                번호를 붙이고 평가를 알려 준 뒤 주된 근거만 묻는 두 번째 요청으로
+                문장 번호를 고르게 했으며, 평가를 바꿀 수 없는 이 요청은 25줄 중
+                21줄에서 문장을 찾았습니다. 모델이 선택지마다 확률도 함께
+                돌려주므로, 확률이 높은 문장부터 합이 0.7이 될 때까지 최대 5개를,
                 고른 문장이 없으면 안내 문구를 보여 줍니다.
+                <strong class="entry-label">결과:</strong> 2026년 11월 6일부터
+                점수를 바꾸는 조건 줄마다 고른 공고 문장을 원문 그대로 근거로
+                보여 줍니다.
               </p>
             </div>
           </li>
@@ -476,36 +496,45 @@
                 >Cha Physical Therapy</a
               >
               <p class="entry-desc" lang="en">
-                Under a freelance contract, I design, build, deploy, and operate
-                the backend and infrastructure of a New York physical therapy
-                clinic&rsquo;s web service on my own.
-                Online booking has been live since November 7, 2026, from the
-                clinic&rsquo;s
-                <strong>WebPT schedule imported at five-minute intervals</strong>;
-                stale data falls back to the request form. In April 2026, I
+                <strong class="entry-label">Role:</strong> Under a freelance
+                contract, I design, build, deploy, and operate the backend and
+                infrastructure of a New York physical therapy clinic&rsquo;s web
+                service on my own.
+                <strong class="entry-label">Booking:</strong> Online booking has
+                been live since November 7, 2026, from the clinic&rsquo;s WebPT
+                schedule imported at five-minute intervals; stale data falls back
+                to the request form.
+                <strong class="entry-label">Outage:</strong> In April 2026, I
                 traced a 2 hour 54 minute outage to the gp3 volume&rsquo;s
-                <strong>125&nbsp;MiB/s throughput ceiling</strong>, restored the
-                site with no customer data loss, and added alarms, query time
-                limits, and indexes
-                (<a
+                125&nbsp;MiB/s throughput ceiling and restored the site with no
+                customer data loss. I then added alarms, query time limits, and
+                indexes, and published a
+                <a
                   href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.md"
                   >postmortem</a
-                >). Between October 13 and November 10, 2026, 17 pull requests
-                authored by a clinic staff member were merged through a CI gate.
+                >.
+                <strong class="entry-label">Publish:</strong> Between October 13
+                and November 10, 2026, 17 pull requests authored by a clinic
+                staff member were merged through a CI gate.
               </p>
               <p class="entry-desc" lang="ko">
-                미국 물리치료 클리닉과 프리랜서 계약을 맺고, 웹 서비스의 백엔드와
-                인프라를 단독으로 설계, 구축, 배포, 운영하고 있습니다. 2026년 11월 7일부터
-                <strong>WebPT 일정을 5분 간격으로</strong> 가져와 온라인 예약을
-                운영하며, 데이터가 오래되면 예약 요청 폼으로 전환합니다. 2026년
-                4월에는 2시간 54분 장애의 원인을 gp3 볼륨의
-                <strong>처리량 한도(125MiB/s)</strong>로 찾아 고객 데이터 손실 없이
-                복구하고, 알람과 쿼리 실행 시간 제한, 인덱스를 추가해
+                <strong class="entry-label">운영:</strong> 뉴욕 물리치료 클리닉과
+                프리랜서 계약을 맺고, 웹 서비스의 백엔드와 인프라를 단독으로
+                설계, 구축, 배포, 운영하고 있습니다.
+                <strong class="entry-label">예약:</strong> 2026년 11월 7일부터
+                클리닉의 WebPT 일정을 5분 간격으로 가져와 온라인 예약을 운영하며,
+                데이터가 오래되면 예약 요청 폼으로 전환합니다.
+                <strong class="entry-label">장애:</strong> 2026년 4월, 2시간 54분
+                장애의 원인을 gp3 볼륨의 처리량 한도(125MiB/s)로 찾아 고객 데이터
+                손실 없이 복구했습니다. 이후 알람과 쿼리 실행 시간 제한, 인덱스를
+                추가하고
                 <a
                   href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.ko.md"
                   >사후 보고서</a
-                >로 공개했습니다. 2026년 10월 13일부터 11월 10일까지 클리닉 직원이
-                작성한 PR 17건이 CI 게이트를 거쳐 병합됐습니다.
+                >로 공개했습니다.
+                <strong class="entry-label">배포:</strong> 2026년 10월 13일부터
+                11월 10일까지 클리닉 직원이 작성한 PR 17건이 CI 게이트를 거쳐
+                병합되었습니다.
               </p>
             </div>
           </li>
@@ -518,16 +547,25 @@
                 >Alix Chaput Architecture</a
               >
               <p class="entry-desc" lang="en">
-                My first client project: a French architect&rsquo;s portfolio
-                site, which I hand-coded with a
-                <strong>responsive layout built on CSS breakpoints</strong>. I
-                converted the images to WebP and deployed the site on GitHub
-                Pages.
+                <strong class="entry-label">Goal:</strong> My first client
+                project was a portfolio site for a French architect, and it had
+                to hold up on desktop, tablet, and mobile.
+                <strong class="entry-label">Solution:</strong> I hand-built a
+                responsive layout with CSS breakpoints and JavaScript, converted
+                the images to WebP, and deployed the site on GitHub Pages.
+                <strong class="entry-label">Lesson:</strong> Building the UI by
+                hand taught me the fundamentals and why declarative frameworks
+                exist.
               </p>
               <p class="entry-desc" lang="ko">
-                첫 클라이언트 프로젝트로 프랑스 건축가의 포트폴리오 사이트를 직접
-                코딩했습니다. <strong>CSS breakpoint로 반응형 레이아웃</strong>을
-                만들고, 이미지를 WebP로 변환해 GitHub Pages에 배포했습니다.
+                <strong class="entry-label">목적:</strong> 첫 클라이언트
+                프로젝트로 프랑스 건축가의 포트폴리오 사이트를 만들었고, 이
+                사이트는 데스크톱, 태블릿, 모바일에서 일관되게 보여야 했습니다.
+                <strong class="entry-label">해결:</strong> CSS breakpoint와
+                JavaScript로 반응형 레이아웃을 직접 구현하고, 이미지를 WebP로
+                변환해 GitHub Pages에 배포했습니다.
+                <strong class="entry-label">교훈:</strong> UI를 직접 만들며
+                기본기를 다졌고, 선언형 프레임워크가 왜 필요한지 체감했습니다.
               </p>
             </div>
           </li>
