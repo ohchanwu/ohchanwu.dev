@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title data-i18n-en="Chanwu Oh — Presentation" data-i18n-ko="오찬우 - 발표 자료">
+      Chanwu Oh — Presentation
+    </title>
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png" />
+    <link rel="icon" href="../favicon.ico" sizes="any" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function () {
+        const root = document.documentElement;
+
+        try {
+          const t = localStorage.getItem("theme");
+          if (t === "light" || t === "dark") {
+            root.setAttribute("data-theme", t);
+          }
+        } catch (e) {}
+
+        let lang;
+        try {
+          const stored = localStorage.getItem("lang");
+          if (stored === "en" || stored === "ko") {
+            lang = stored;
+          }
+        } catch (e) {}
+        if (!lang) {
+          lang = (navigator.language || "").toLowerCase().startsWith("ko")
+            ? "ko"
+            : "en";
+        }
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+
+        const title = document.querySelector("title");
+        const titleKey = lang === "ko" ? "i18nKo" : "i18nEn";
+        if (title && title.dataset[titleKey]) {
+          title.textContent = title.dataset[titleKey];
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      /* Large targets for a projector or a large screen: at 1280 px width the
+         text is about 23 px and each link is at least 59 px high. */
+      .prez-name {
+        color: var(--fg-bright);
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+      }
+
+      .prez-list {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .prez-list a {
+        display: flex;
+        align-items: center;
+        min-height: 3.5rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--dim);
+        border-radius: 4px;
+        color: var(--fg);
+        font-size: 1.35rem;
+        font-weight: 500;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+        word-break: keep-all;
+      }
+
+      .prez-list a:hover,
+      .prez-list a:focus-visible {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .prez-list a:focus-visible {
+        outline: 1px solid var(--accent);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      id="lang-toggle"
+      class="lang-toggle"
+      type="button"
+      aria-label="언어를 한국어로 변경"
+    >
+      <span class="glyph-en">A</span>
+      <span class="glyph-ko">한</span>
+    </button>
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      type="button"
+      aria-label="Switch to light mode"
+    >
+      <svg
+        class="icon-sun"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+        />
+      </svg>
+      <svg
+        class="icon-moon"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+    </button>
+    <main>
+      <h1 class="prez-name">
+        <span lang="en">Chanwu Oh</span><span lang="ko">오찬우</span>
+      </h1>
+
+      <!-- To add an item, copy one <li> and change its href and label. Put
+           images or other files in static/prez/ and link them relatively, by
+           file name alone (photo.png); link other site files with ../ in
+           front of the file name. -->
+      <ul class="prez-list">
+        <li>
+          <a href="../오찬우_포트폴리오.pdf" target="_blank" rel="noopener"
+            ><span lang="en">Portfolio PDF (Korean)</span
+            ><span lang="ko">포트폴리오 PDF</span></a
+          >
+        </li>
+        <li>
+          <a href="../오찬우_이력서.pdf" target="_blank" rel="noopener"
+            ><span lang="en">Resume PDF (Korean)</span
+            ><span lang="ko">이력서 PDF (한국어)</span></a
+          >
+        </li>
+        <li>
+          <a href="../Chanwu_Oh_Resume.pdf" target="_blank" rel="noopener"
+            ><span lang="en">Resume PDF (English)</span
+            ><span lang="ko">이력서 PDF (영어)</span></a
+          >
+        </li>
+        <li>
+          <a href="https://jobcron.app" target="_blank" rel="noopener"
+            >Jobcron</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.chaphysicaltherapy.com/"
+            target="_blank"
+            rel="noopener"
+            >Cha Physical Therapy</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.ko.md"
+            target="_blank"
+            rel="noopener"
+            ><span lang="en">Cha Physical Therapy postmortem 2026-04-17 (Korean)</span
+            ><span lang="ko">Cha Physical Therapy 사후 보고서 2026-04-17 (한국어)</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.md"
+            target="_blank"
+            rel="noopener"
+            ><span lang="en">Cha Physical Therapy postmortem 2026-04-17 (English)</span
+            ><span lang="ko">Cha Physical Therapy 사후 보고서 2026-04-17 (영어)</span></a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/ohchanwu" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+        </li>
+        <li>
+          <a href="../" target="_blank" rel="noopener">ohchanwu.dev</a>
+        </li>
+      </ul>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
