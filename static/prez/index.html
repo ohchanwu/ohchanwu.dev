@@ -90,9 +90,21 @@
         border-color: var(--accent);
       }
 
-      .prez-list a:focus-visible {
+      .prez-list a:focus-visible,
+      .prez-home:focus-visible {
         outline: 1px solid var(--accent);
         outline-offset: 2px;
+      }
+
+      .prez-home {
+        display: inline-block;
+        margin-top: 2rem;
+        color: var(--fg);
+        text-decoration: underline;
+      }
+
+      .prez-home:hover {
+        color: var(--accent);
       }
     </style>
   </head>
@@ -149,69 +161,15 @@
         <span lang="en">Chanwu Oh</span><span lang="ko">오찬우</span>
       </h1>
 
-      <!-- To add an item, copy one <li> and change its href and label. Put
-           images or other files in static/prez/ and link them relatively, by
-           file name alone (photo.png); link other site files with ../ in
-           front of the file name. -->
+      <!-- To add a talk, copy one <li> and change its href and label, then
+           add a folder with the talk page: static/prez/<name>/index.html.
+           Link the folder relatively (<name>/); from the talk page, link
+           other site files with ../../ in front of the file name. -->
       <ul class="prez-list">
-        <li>
-          <a href="../오찬우_포트폴리오.pdf" target="_blank" rel="noopener"
-            ><span lang="en">Portfolio PDF (Korean)</span
-            ><span lang="ko">포트폴리오 PDF</span></a
-          >
-        </li>
-        <li>
-          <a href="../오찬우_이력서.pdf" target="_blank" rel="noopener"
-            ><span lang="en">Resume PDF (Korean)</span
-            ><span lang="ko">이력서 PDF (한국어)</span></a
-          >
-        </li>
-        <li>
-          <a href="../Chanwu_Oh_Resume.pdf" target="_blank" rel="noopener"
-            ><span lang="en">Resume PDF (English)</span
-            ><span lang="ko">이력서 PDF (영어)</span></a
-          >
-        </li>
-        <li>
-          <a href="https://jobcron.app" target="_blank" rel="noopener"
-            >Jobcron</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.chaphysicaltherapy.com/"
-            target="_blank"
-            rel="noopener"
-            >Cha Physical Therapy</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.ko.md"
-            target="_blank"
-            rel="noopener"
-            ><span lang="en">Cha Physical Therapy postmortem 2026-04-17 (Korean)</span
-            ><span lang="ko">Cha Physical Therapy 사후 보고서 2026-04-17 (한국어)</span></a
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/ohchanwu/cha-pt-postmortems/blob/main/2026-04-17/2026-04-17.md"
-            target="_blank"
-            rel="noopener"
-            ><span lang="en">Cha Physical Therapy postmortem 2026-04-17 (English)</span
-            ><span lang="ko">Cha Physical Therapy 사후 보고서 2026-04-17 (영어)</span></a
-          >
-        </li>
-        <li>
-          <a href="https://github.com/ohchanwu" target="_blank" rel="noopener"
-            >GitHub</a
-          >
-        </li>
-        <li>
-          <a href="../" target="_blank" rel="noopener">ohchanwu.dev</a>
-        </li>
+        <li><a href="jobcron/">Jobcron 라이브 데모</a></li>
       </ul>
+
+      <a class="prez-home" href="../">ohchanwu.dev</a>
     </main>
 
     <script src="../script.js"></script>

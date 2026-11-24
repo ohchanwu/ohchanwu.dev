@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko" data-lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Jobcron 라이브 데모</title>
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png" />
+    <link rel="icon" href="../../favicon.ico" sizes="any" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function () {
+        try {
+          const t = localStorage.getItem("theme");
+          if (t === "light" || t === "dark") {
+            document.documentElement.setAttribute("data-theme", t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="../../style.css" />
+    <style>
+      /* Projector size: at 1280 px width the step text is about 23 px and
+         each link box is at least 59 px high. */
+      main {
+        max-width: 48rem;
+      }
+
+      .prez-name {
+        color: var(--fg-bright);
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      .prez-back {
+        display: inline-block;
+        color: var(--fg);
+        text-decoration: underline;
+      }
+
+      .prez-open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4rem;
+        margin: 1.5rem 0 2.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        background: var(--accent);
+        color: var(--bg);
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
+      .prez-steps {
+        padding-left: 2.5rem;
+        font-size: 1.35rem;
+        line-height: 1.5;
+        color: var(--fg-bright);
+      }
+
+      .prez-steps > li + li {
+        margin-top: 1.25rem;
+      }
+
+      .prez-steps > li::marker {
+        color: var(--accent);
+      }
+
+      .prez-list {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+      }
+
+      .prez-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 560px) {
+        .prez-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .prez-list a {
+        display: flex;
+        align-items: center;
+        min-height: 3.5rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--dim);
+        border-radius: 4px;
+        color: var(--fg);
+        font-size: 1.35rem;
+        font-weight: 500;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+        word-break: keep-all;
+      }
+
+      .prez-list a:hover,
+      .prez-list a:focus-visible,
+      .prez-back:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .prez-open:hover {
+        background: var(--fg-bright);
+      }
+
+      .prez-list a:focus-visible,
+      .prez-back:focus-visible,
+      .prez-open:focus-visible {
+        outline: 1px solid var(--accent);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      type="button"
+      aria-label="라이트 모드로 변경"
+    >
+      <svg
+        class="icon-sun"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+        />
+      </svg>
+      <svg
+        class="icon-moon"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+    </button>
+    <main>
+      <h1 class="prez-name">Jobcron 라이브 데모</h1>
+      <a class="prez-back" href="../">목록</a>
+
+      <a
+        class="prez-open"
+        href="https://jobcron.app"
+        target="_blank"
+        rel="noopener"
+        >jobcron.app 열기</a
+      >
+
+      <ol class="prez-steps">
+        <li>
+          문제 소개: 제목에는 "신입"이 있지만 본문 자격 요건은 신입에게 맞지 않는 공고
+          <ul class="prez-list prez-grid">
+            <li><a href="https://www.nklcb.net/jobList" target="_blank" rel="noopener">네카라쿠배</a></li>
+            <li><a href="https://jumpit.saramin.co.kr/" target="_blank" rel="noopener">점핏</a></li>
+            <li><a href="https://www.rallit.com/" target="_blank" rel="noopener">랠릿</a></li>
+            <li><a href="https://linkareer.com/" target="_blank" rel="noopener">링커리어</a></li>
+            <li><a href="https://jasoseol.com/" target="_blank" rel="noopener">자소설닷컴</a></li>
+            <li><a href="https://www.superookie.com/" target="_blank" rel="noopener">슈퍼루키</a></li>
+          </ul>
+        </li>
+        <li>취업 준비를 해 본 분 질문</li>
+        <li>채용 공고를 찾을 때 불편했던 점 질문</li>
+        <li>데모 참여자 모집 (참여자에게 초코파이 한 상자 깜짝 선물)</li>
+        <li>
+          시작 설정 양식을 함께 작성
+          <ul class="prez-list">
+            <li><a href="https://jobcron.app" target="_blank" rel="noopener">jobcron.app</a></li>
+          </ul>
+        </li>
+        <li>
+          전체 공고에서 재평가 누르기
+          <ul class="prez-list">
+            <li><a href="https://jumpit.saramin.co.kr/position/55607629" target="_blank" rel="noopener">데모 공고 (점핏)</a></li>
+          </ul>
+        </li>
+        <li>평가 근거 문장 보여 주기</li>
+        <li>설정 페이지와 이메일 알림 옵션 보여 주기</li>
+        <li>
+          피드백 요청 (16기 전체 소통방 글)
+          <ul class="prez-list">
+            <li><a href="https://forms.gle/56rNenYwTGEbZL4w8" target="_blank" rel="noopener">피드백 양식</a></li>
+          </ul>
+        </li>
+        <li>질문 받기</li>
+      </ol>
+    </main>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>
