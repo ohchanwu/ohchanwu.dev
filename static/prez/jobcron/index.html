@@ -29,7 +29,52 @@
       })();
     </script>
     <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css"
+    />
     <style>
+      /* Jobcron design tokens (jobcron.app/static/styles.css, 2026-11-25),
+         mapped onto the site variable names for this page only. */
+      :root,
+      :root[data-theme="dark"] {
+        --bg: #101112;
+        --surface: #18191b;
+        --chip-bg: #232528;
+        --fg: #a6acb5;
+        --fg-bright: #eceef1;
+        --muted: #a6acb5;
+        --accent: #79a8f0;
+        --dim: #3d4045;
+        --selection-fg: #101112;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root:not([data-theme]) {
+          --bg: #f4f6f9;
+          --surface: #ffffff;
+          --chip-bg: #eef1f5;
+          --fg: #525c6b;
+          --fg-bright: #0f1623;
+          --muted: #525c6b;
+          --accent: #1d5fbf;
+          --dim: #cbd1da;
+          --selection-fg: #f4f6f9;
+        }
+      }
+
+      :root[data-theme="light"] {
+        --bg: #f4f6f9;
+        --surface: #ffffff;
+        --chip-bg: #eef1f5;
+        --fg: #525c6b;
+        --fg-bright: #0f1623;
+        --muted: #525c6b;
+        --accent: #1d5fbf;
+        --dim: #cbd1da;
+        --selection-fg: #f4f6f9;
+      }
+
       /* Projector size: at 1280 px width the step text is about 23 px and
          each link box is at least 59 px high. */
       html {
@@ -152,6 +197,7 @@
         text-align: center;
         overflow: hidden;
         user-select: none;
+        font-family: "Pretendard Variable", Pretendard, var(--mono);
       }
 
       .slide h2 {
@@ -203,14 +249,22 @@
       .portals {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem 2rem;
+        grid-auto-rows: 1fr;
+        gap: 1.25rem;
         width: 100%;
-        max-width: 72rem;
+        max-width: 74rem;
         text-align: left;
       }
 
+      .pgroup {
+        padding: 0.9rem 1.2rem;
+        border: 1px solid var(--dim);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
       .pgroup h3 {
-        margin: 0 0 0.4rem;
+        margin: 0 0 0.6rem;
         color: var(--accent);
         font-size: 1.1rem;
         font-weight: 600;
@@ -219,7 +273,7 @@
       .pgroup ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.4rem 1.1rem;
+        gap: 0.5rem 1.4rem;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -276,6 +330,7 @@
         padding: 2rem 1rem;
         border: 1px solid var(--dim);
         border-radius: 8px;
+        background: var(--surface);
         color: var(--fg-bright);
         font-size: 1.5rem;
         line-height: 1.35;
@@ -312,22 +367,6 @@
         min-height: 0;
       }
 
-      #s2 .pgroup li {
-        font-size: 1.1rem;
-      }
-
-      #s2 .portals {
-        gap: 0.8rem 1.5rem;
-      }
-
-      .side {
-        flex: 0 0 26%;
-        margin: 0;
-        color: var(--fg);
-        font-size: 1.1rem;
-      }
-
-      .side img,
       .app {
         display: block;
         max-width: 100%;
@@ -455,8 +494,7 @@
 
     <section class="slide dense" id="s2">
       <h2>채용 포털은 수십 개</h2>
-      <div class="row">
-        <div class="portals">
+      <div class="portals">
             <div class="pgroup"><h3>대기업·중견 공채</h3><ul><li>자소설</li><li><img src="img/fav-catch.png" alt="" width="28" height="28" />캐치</li><li><img src="img/fav-jobda.png" alt="" width="28" height="28" />잡다</li><li><img src="img/fav-linkareer.png" alt="" width="28" height="28" />링커리어</li></ul></div>
             <div class="pgroup"><h3>종합 포털</h3><ul><li><img src="img/fav-saramin.png" alt="" width="28" height="28" />사람인</li><li><img src="img/fav-jobkorea.png" alt="" width="28" height="28" />잡코리아</li><li><img src="img/fav-incruit.png" alt="" width="28" height="28" />인크루트</li><li><img src="img/fav-jobplanet.png" alt="" width="28" height="28" />잡플래닛</li></ul></div>
             <div class="pgroup"><h3>개발자 전문</h3><ul><li><img src="img/fav-jumpit.png" alt="" width="28" height="28" />점핏</li><li><img src="img/fav-rallit.png" alt="" width="28" height="28" />랠릿</li><li><img src="img/fav-programmers.png" alt="" width="28" height="28" />프로그래머스 커리어</li></ul></div>
@@ -466,8 +504,6 @@
             <div class="pgroup"><h3>외국계</h3><ul><li><img src="img/fav-peoplenjob.png" alt="" width="28" height="28" />피플앤잡</li><li><img src="img/fav-linkedin.png" alt="" width="28" height="28" />LinkedIn</li><li><img src="img/fav-indeed.png" alt="" width="28" height="28" />Indeed Korea</li></ul></div>
             <div class="pgroup"><h3>경력직 스카우트</h3><ul><li><img src="img/fav-remember.png" alt="" width="28" height="28" />리멤버 커리어</li></ul></div>
             <div class="pgroup"><h3>공공·지역</h3><ul><li><img src="img/fav-work24.png" alt="" width="28" height="28" />고용24</li><li><img src="img/fav-seouljob.png" alt="" width="28" height="28" />서울일자리포털</li><li><img src="img/fav-jobaba.png" alt="" width="28" height="28" />잡아바</li></ul></div>
-        </div>
-        <figure class="side"><img src="img/list-jumpit.webp" alt="점핏 개발 직무 공고 목록" /><figcaption>점핏 공고 목록</figcaption></figure>
       </div>
       <p class="sub">한 곳만 쓰면 놓치는 공고가 생깁니다</p>
     </section>
@@ -489,7 +525,7 @@
         <img class="app" src="img/app-1.png" alt="Jobcron 공고 목록 화면" />
         <ul class="tiles">
           <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg><span>8개 포털 + 기업 채용 페이지 수집</span></li>
-          <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>중복 제거</span></li>
+          <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><path d="M14 4h7"/><path d="M14 9h7"/><path d="M14 15h7"/><path d="M14 20h7"/></svg><span>한눈에 보기 편하게</span></li>
           <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><span>학력·경력·지역·기피 조건으로 자동 필터</span>
             <!-- Image slot for the owner's profile and filter settings screenshot; add when the file exists:
                  <img class="app-small" src="img/app-3.png" alt="Jobcron 프로필·필터 설정 화면" /> --></li>
