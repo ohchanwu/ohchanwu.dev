@@ -32,8 +32,19 @@
     <style>
       /* Projector size: at 1280 px width the step text is about 23 px and
          each link box is at least 59 px high. */
+      html {
+        scroll-snap-type: y mandatory;
+      }
+
+      body {
+        padding: 0;
+        word-break: keep-all;
+      }
+
       main {
         max-width: 48rem;
+        padding: 5rem 1.5rem;
+        scroll-snap-align: start;
       }
 
       .prez-name {
@@ -125,6 +136,269 @@
         outline: 1px solid var(--accent);
         outline-offset: 2px;
       }
+
+      /* Slides: one viewport each; PageDown, Space and the arrow keys move
+         one slide because of the scroll snap on html. */
+      .slide {
+        box-sizing: border-box;
+        height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        padding: 3rem 4rem;
+        text-align: center;
+        overflow: hidden;
+        user-select: none;
+      }
+
+      .slide h2 {
+        margin: 0;
+        color: var(--fg-bright);
+        font-size: clamp(3rem, 5vw, 5rem);
+        font-weight: 600;
+        line-height: 1.25;
+      }
+
+      .slide .sub {
+        margin: 0;
+        color: var(--fg);
+        font-size: clamp(1.5rem, 2.4vw, 2.4rem);
+        line-height: 1.4;
+      }
+
+      .slide .ic {
+        width: 6rem;
+        height: 6rem;
+        color: var(--accent);
+      }
+
+      .slide .logo {
+        width: 14rem;
+        height: 14rem;
+      }
+
+      .slide.dense {
+        gap: 1.5rem;
+        padding: 2rem 3rem;
+      }
+
+      .slide.dense h2 {
+        font-size: 3rem;
+      }
+
+      .icons {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .icons .ic {
+        width: 9rem;
+        height: 9rem;
+      }
+
+      .portals {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem 2rem;
+        width: 100%;
+        max-width: 72rem;
+        text-align: left;
+      }
+
+      .pgroup h3 {
+        margin: 0 0 0.4rem;
+        color: var(--accent);
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .pgroup ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .pgroup li {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--fg-bright);
+        font-size: 1.25rem;
+      }
+
+      .pgroup img {
+        border-radius: 6px;
+        background: #fff;
+      }
+
+      .flow {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .flow li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 11rem;
+        color: var(--fg-bright);
+        font-size: 1.5rem;
+        line-height: 1.3;
+      }
+
+      .tiles {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 76rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tiles li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 2rem 1rem;
+        border: 1px solid var(--dim);
+        border-radius: 8px;
+        color: var(--fg-bright);
+        font-size: 1.5rem;
+        line-height: 1.35;
+      }
+
+      .shots {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .shots img {
+        display: block;
+        max-width: 100%;
+        border: 1px solid var(--dim);
+        border-radius: 6px;
+      }
+
+      .shots img {
+        width: auto;
+        max-width: 80vw;
+        height: 32vh;
+        background: #fff;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+        max-width: 90rem;
+        min-height: 0;
+      }
+
+      #s2 .pgroup li {
+        font-size: 1.1rem;
+      }
+
+      #s2 .portals {
+        gap: 0.8rem 1.5rem;
+      }
+
+      .side {
+        flex: 0 0 26%;
+        margin: 0;
+        color: var(--fg);
+        font-size: 1.1rem;
+      }
+
+      .side img,
+      .app {
+        display: block;
+        max-width: 100%;
+        border: 1px solid var(--dim);
+        border-radius: 6px;
+      }
+
+      .app {
+        height: 70vh;
+        width: auto;
+      }
+
+      #s4 .tiles {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      #s4 .tiles li {
+        padding: 1.2rem 0.8rem;
+        font-size: 1.3rem;
+      }
+
+      #s4 .tiles .ic {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      #s3 .flow .ic {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      #s3 .flow li {
+        font-size: 1.3rem;
+        gap: 0.5rem;
+      }
+
+      #s3 .shots {
+        margin: 0;
+        gap: 0.5rem;
+      }
+
+      #s3 .shots img {
+        height: 17vh;
+      }
+
+      #s3 .shots figcaption {
+        color: var(--accent);
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
+      .end-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        color: var(--fg-bright);
+        font-size: clamp(3rem, 5vw, 5rem);
+        font-weight: 600;
+      }
+
+      .end-link .logo {
+        width: 20rem;
+        height: 20rem;
+      }
+
+      .end-link:hover,
+      .end-link:focus-visible {
+        color: var(--accent);
+      }
     </style>
   </head>
   <body>
@@ -166,6 +440,68 @@
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
       </svg>
     </button>
+    <!-- Icons: Lucide (https://lucide.dev), ISC License,
+         Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022
+         as part of Feather (MIT). All other copyright (c) for Lucide are held
+         by Lucide Contributors 2022. Permission to use, copy, modify, and/or
+         distribute this software for any purpose with or without fee is
+         hereby granted, provided that the above copyright notice and this
+         permission notice appear in all copies. -->
+    <section class="slide" id="s1">
+      <div class="icons"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+      <h2>중소기업·스타트업도 본다면</h2>
+      <p class="sub">신입 개발자를 뽑는 회사는 수백~수천 곳, 공고는 매일 바뀝니다</p>
+    </section>
+
+    <section class="slide dense" id="s2">
+      <h2>채용 포털은 수십 개</h2>
+      <div class="row">
+        <div class="portals">
+            <div class="pgroup"><h3>대기업·중견 공채</h3><ul><li>자소설</li><li><img src="img/fav-catch.png" alt="" width="28" height="28" />캐치</li><li><img src="img/fav-jobda.png" alt="" width="28" height="28" />잡다</li><li><img src="img/fav-linkareer.png" alt="" width="28" height="28" />링커리어</li></ul></div>
+            <div class="pgroup"><h3>종합 포털</h3><ul><li><img src="img/fav-saramin.png" alt="" width="28" height="28" />사람인</li><li><img src="img/fav-jobkorea.png" alt="" width="28" height="28" />잡코리아</li><li><img src="img/fav-incruit.png" alt="" width="28" height="28" />인크루트</li><li><img src="img/fav-jobplanet.png" alt="" width="28" height="28" />잡플래닛</li></ul></div>
+            <div class="pgroup"><h3>개발자 전문</h3><ul><li><img src="img/fav-jumpit.png" alt="" width="28" height="28" />점핏</li><li><img src="img/fav-rallit.png" alt="" width="28" height="28" />랠릿</li><li><img src="img/fav-programmers.png" alt="" width="28" height="28" />프로그래머스 커리어</li></ul></div>
+            <div class="pgroup"><h3>스타트업</h3><ul><li><img src="img/fav-wanted.png" alt="" width="28" height="28" />원티드</li><li><img src="img/fav-rocketpunch.png" alt="" width="28" height="28" />로켓펀치</li><li><img src="img/fav-demoday.png" alt="" width="28" height="28" />데모데이</li><li><img src="img/fav-greeting.png" alt="" width="28" height="28" />그리팅</li></ul></div>
+            <div class="pgroup"><h3>빅테크 공고 모음</h3><ul><li><img src="img/fav-nklcb.png" alt="" width="28" height="28" />네카라쿠배</li></ul></div>
+            <div class="pgroup"><h3>신입·인턴</h3><ul><li>슈퍼루키</li></ul></div>
+            <div class="pgroup"><h3>외국계</h3><ul><li><img src="img/fav-peoplenjob.png" alt="" width="28" height="28" />피플앤잡</li><li><img src="img/fav-linkedin.png" alt="" width="28" height="28" />LinkedIn</li><li><img src="img/fav-indeed.png" alt="" width="28" height="28" />Indeed Korea</li></ul></div>
+            <div class="pgroup"><h3>경력직 스카우트</h3><ul><li><img src="img/fav-remember.png" alt="" width="28" height="28" />리멤버 커리어</li></ul></div>
+            <div class="pgroup"><h3>공공·지역</h3><ul><li><img src="img/fav-work24.png" alt="" width="28" height="28" />고용24</li><li><img src="img/fav-seouljob.png" alt="" width="28" height="28" />서울일자리포털</li><li><img src="img/fav-jobaba.png" alt="" width="28" height="28" />잡아바</li></ul></div>
+        </div>
+        <figure class="side"><img src="img/list-jumpit.webp" alt="점핏 개발 직무 공고 목록" /><figcaption>점핏 공고 목록</figcaption></figure>
+      </div>
+      <p class="sub">한 곳만 쓰면 놓치는 공고가 생깁니다</p>
+    </section>
+
+    <section class="slide dense" id="s3">
+      <h2>매주 해야 하는 일</h2>
+      <ol class="flow"><li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg><span>각 포털 로그인</span></li><li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span>개발 직군 선택</span></li><li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><span>필터 적용</span></li><li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>공고 하나씩 읽기</span></li><li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg><span>Notion에 따로 정리</span></li></ol>
+      <figure class="shots">
+        <img src="img/post-title.webp" alt="점핏 공고 제목: 네트워크 엔지니어 신입 채용" />
+        <img src="img/post-req.webp" alt="같은 공고의 자격요건: 해당 유관 업무 5년 이상 경력자" />
+        <figcaption>제목은 신입, 본문은 경력</figcaption>
+      </figure>
+      <p class="sub">순위 매기기 · 마감일 관리까지</p>
+    </section>
+
+    <section class="slide dense" id="s4">
+      <h2>Jobcron</h2>
+      <div class="row">
+        <img class="app" src="img/app-1.png" alt="Jobcron 공고 목록 화면" />
+        <ul class="tiles">
+          <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg><span>8개 포털 + 기업 채용 페이지 수집</span></li>
+          <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>중복 제거</span></li>
+          <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><span>학력·경력·지역·기피 조건으로 자동 필터</span>
+            <!-- Image slot for the owner's profile and filter settings screenshot; add when the file exists:
+                 <img class="app-small" src="img/app-3.png" alt="Jobcron 프로필·필터 설정 화면" /> --></li>
+          <li><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg><span>자유 조건 AI 평가 · 순위</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide" id="s5">
+      <a class="end-link" href="https://jobcron.app" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true" viewBox="0 0 100 100"><defs><linearGradient id="jc-g" gradientUnits="userSpaceOnUse" x1="22" y1="18" x2="88" y2="78"><stop offset="0" stop-color="#3D7BEA"/><stop offset="1" stop-color="#711FFF"/></linearGradient></defs><circle cx="70" cy="58" r="18" fill="none" stroke="url(#jc-g)" stroke-opacity="0.28" stroke-width="13"/><g fill="none" stroke="url(#jc-g)" stroke-width="13" stroke-linecap="round"><path d="M38 16 V62 A14 14 0 0 1 10.8 66.8"/><path d="M83.8 46.4 A18 18 0 1 0 86.4 65.6"/></g></svg><span>jobcron.app</span></a>
+    </section>
+
     <main>
       <h1 class="prez-name">Jobcron 라이브 데모</h1>
       <a class="prez-back" href="../">목록</a>
@@ -217,6 +553,18 @@
       </ol>
     </main>
 
+    <script>
+      // Double-click on a slide (not on a link or a button) moves to the next slide.
+      document.addEventListener("dblclick", function (e) {
+        if (e.target.closest("a, button")) return;
+        const cur = e.target.closest("section.slide");
+        if (!cur) return;
+        let next = cur.nextElementSibling;
+        while (next && !next.matches("section.slide")) next = next.nextElementSibling;
+        window.getSelection().removeAllRanges();
+        if (next) next.scrollIntoView({ behavior: "smooth" });
+      });
+    </script>
     <script src="../../script.js"></script>
   </body>
 </html>
